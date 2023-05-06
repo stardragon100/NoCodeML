@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import Linear_regression from './Linear_regression.js'
 import Logistic_resgression from './Logistic_resgression.jsx'
-
+import KNN from './KNN.jsx'
 
 const NewComp = () => {
   const [layers,setLayers]=useState([])
@@ -14,6 +14,10 @@ const NewComp = () => {
   function addLogisticRegression()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'logistic_regression',penalty:'l2',random_state:'none',max_iter:'default'}]})
+  }
+  function addKNN()
+  {
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'knn'}]})
   }
   function changeLogisticPenalty(key,penalty)
   {
@@ -34,6 +38,7 @@ const NewComp = () => {
       <div className='w-48 h-48 border-dashed border-2 gap-1'>
         <button className='w-44 border-2 m-1' onClick={()=>addLinearRegression()}>LinearRegression</button>
         <button className='w-44 border-2 m-1' onClick={()=>addLogisticRegression()}>LogisticRegression</button>
+        <button className='w-44 border-2 m-1' onClick={()=>addKNN()}>KNN</button>
       </div>
         <ul className='h-48 flex flex-row gap-2 p-1'>
           {
@@ -47,7 +52,10 @@ const NewComp = () => {
             {
               return <Logistic_resgression setKey={layer.key} changeLogisticPenalty={changeLogisticPenalty}/>
             }
-          
+            if(layer.type==='knn')
+            {
+              return <KNN setKey={layer.key}  />
+            }
           })}
         </ul>
     </div>
