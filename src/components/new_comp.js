@@ -13,7 +13,7 @@ const NewComp = () => {
   }
   function addLogisticRegression()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'logistic_regression',penalty:'l2',random_state:'none',max_iter:'default'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'logistic_regression',class_weight:'Balanced',penalty:'l2',random_state:'none',max_iter:'default'}]})
   }
   function addKNN()
   {
@@ -28,6 +28,42 @@ const NewComp = () => {
         console.log(key+'   '+layer.key)
           console.log(penalty)
           return {...layer,penalty}
+        }
+      return layer
+    })
+    })
+  }
+  function changeLogisticClassWeight(key,class_weight)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,class_weight}
+        }
+      return layer
+    })
+    })
+  }
+  function changeLogisticRandomState(key,random_state)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,random_state}
+        }
+      return layer
+    })
+    })
+  }
+  function changeLogisticMaxIter(key,max_iter)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,max_iter}
         }
       return layer
     })
@@ -50,7 +86,7 @@ const NewComp = () => {
             }
             if(layer.type==='logistic_regression')
             {
-              return <Logistic_resgression setKey={layer.key} changeLogisticPenalty={changeLogisticPenalty}/>
+              return <Logistic_resgression setKey={layer.key} changeLogisticPenalty={changeLogisticPenalty} changeLogisticClassWeight={changeLogisticClassWeight} changeLogisticRandomState={changeLogisticRandomState} changeLogisticMaxIter={changeLogisticMaxIter}/>
             }
             if(layer.type==='knn')
             {

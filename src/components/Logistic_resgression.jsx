@@ -1,8 +1,7 @@
 import React from 'react'
-const Logistic_resgression = ({setKey,changeLogisticPenalty}) => {
+const Logistic_resgression = ({setKey,changeLogisticPenalty,changeLogisticClassWeight,changeLogisticRandomState,changeLogisticMaxIter}) => {
     function changePenalty(key,value)
         {
-            console.log(key)
             changeLogisticPenalty(key,value)
         }
   return (
@@ -15,14 +14,14 @@ const Logistic_resgression = ({setKey,changeLogisticPenalty}) => {
             <option value="none">none</option>
         </select>
         <p className='self-start'>Class Weight</p>
-        <select name="class weight" id="class weight" className='border-1'>
+        <select name="class weight" id="class weight" className='border-1' onChange={e=>changeLogisticClassWeight(setKey,e.target.value)}>
             <option value="L2">balanced</option>
             <option value="none">none</option>
         </select>
         <p className='self-start'>Random State</p>
-        <input type='number'></input>
+        <input type='number' onChange={e=>changeLogisticRandomState(setKey,e.target.value)}></input>
         <p className='self-start'>Max Iteration</p>
-        <input type='number'></input>
+        <input type='number' onChange={e=>changeLogisticMaxIter(setKey,e.target.value)}></input>
     </div>
   )
 }
