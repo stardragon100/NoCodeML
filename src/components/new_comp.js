@@ -17,7 +17,7 @@ const NewComp = () => {
   }
   function addKNN()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'knn'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'knn',choice:'Classifier',number_neighbours:'5',algorithm:'auto',weights:'uniform'}]})
   }
   function changeLogisticPenalty(key,penalty)
   {
@@ -69,50 +69,50 @@ const NewComp = () => {
     })
     })
   }
-  function changeKNNChoice(key,max_iter)
+  function changeKNNChoice(key,choice)
   {
 
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
-          return {...layer,max_iter}
+          return {...layer,choice}
         }
       return layer
     })
     })
   }
-  function changeKNNNumber(key,max_iter)
+  function changeKNNNumber(key,number_neighbours)
   {
 
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
-          return {...layer,max_iter}
+          return {...layer,number_neighbours}
         }
       return layer
     })
     })
   }
   
-  function changeKNNAlgorithm(key,max_iter)
+  function changeKNNAlgorithm(key,algorithm)
   {
 
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
-          return {...layer,max_iter}
+          return {...layer,algorithm}
         }
       return layer
     })
     })
   }
-  function changeKNNWeights(key,max_iter)
+  function changeKNNWeights(key,weights)
   {
 
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
-          return {...layer,max_iter}
+          return {...layer,weights}
         }
       return layer
     })

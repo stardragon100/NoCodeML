@@ -18,7 +18,7 @@ const KNN = ({setKey,changeKNNAlgorithm,changeKNNChoice,changeKNNNumber,changeKN
 
       <p className='self-start'>Algorithm</p>
         <select name="algorithm" id="algorithm" className='border-1' onChange={e=>changeKNNAlgorithm(setKey,e.target.value)}>
-            <option value="auto">balanced</option>
+            <option value="auto">auto</option>
             <option value="ball_tree">ball_tree</option>
             <option value="kd_tree">kd_tree</option>
             <option value="brute">brute</option>
