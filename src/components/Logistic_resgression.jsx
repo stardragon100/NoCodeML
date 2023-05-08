@@ -9,7 +9,7 @@ const Logistic_resgression = ({setKey,changeLogisticPenalty,changeLogisticClassW
         Logistic Resgression
         <p className='self-start'>Penalty</p>
         
-        <select name="penalty" id="penalty" className='border-1' onChange={e=>changePenalty(setKey,e.target.value)}>
+        <select name="penalty" id="penalty" className='border-1' onChange={e=>changeLogisticPenalty(setKey,e.target.value)}>
             <option value="L2">L2</option>
             <option value="none">none</option>
         </select>

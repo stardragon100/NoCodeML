@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import Linear_regression from './Linear_regression.js'
 import Logistic_resgression from './Logistic_resgression.jsx'
-
+import KNN from './KNN.jsx'
 
 const NewComp = () => {
   const [layers,setLayers]=useState([])
@@ -14,6 +14,10 @@ const NewComp = () => {
   function addLogisticRegression()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'logistic_regression',class_weight:'Balanced',penalty:'l2',random_state:'none',max_iter:'default'}]})
+  }
+  function addKNN()
+  {
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'knn',choice:'Classifier',number_neighbours:'5',algorithm:'auto',weights:'uniform'}]})
   }
   function changeLogisticPenalty(key,penalty)
   {
@@ -65,11 +69,61 @@ const NewComp = () => {
     })
     })
   }
+  function changeKNNChoice(key,choice)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,choice}
+        }
+      return layer
+    })
+    })
+  }
+  function changeKNNNumber(key,number_neighbours)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,number_neighbours}
+        }
+      return layer
+    })
+    })
+  }
+  
+  function changeKNNAlgorithm(key,algorithm)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,algorithm}
+        }
+      return layer
+    })
+    })
+  }
+  function changeKNNWeights(key,weights)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,weights}
+        }
+      return layer
+    })
+    })
+  }
   return (
     <div className='m-12 flex flex-row-reverse gap-2'>
       <div className='w-48 h-48 border-dashed border-2 gap-1'>
         <button className='w-44 border-2 m-1' onClick={()=>addLinearRegression()}>LinearRegression</button>
         <button className='w-44 border-2 m-1' onClick={()=>addLogisticRegression()}>LogisticRegression</button>
+        <button className='w-44 border-2 m-1' onClick={()=>addKNN()}>KNN</button>
       </div>
         <ul className='h-48 flex flex-row gap-2 p-1'>
           {
@@ -83,7 +137,10 @@ const NewComp = () => {
             {
               return <Logistic_resgression setKey={layer.key} changeLogisticPenalty={changeLogisticPenalty} changeLogisticClassWeight={changeLogisticClassWeight} changeLogisticRandomState={changeLogisticRandomState} changeLogisticMaxIter={changeLogisticMaxIter}/>
             }
-          
+            if(layer.type==='knn')
+            {
+              return <KNN setKey={layer.key} changeKNNChoice={changeKNNChoice} changeKNNAlgorithm={changeKNNAlgorithm} changeKNNNumber={changeKNNNumber} changeKNNWeights={changeKNNNumber} />
+            }
           })}
         </ul>
     </div>
