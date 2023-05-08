@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RandomForest = ({setKey,changeRandomChoice,changeRandomEstimators,changeRandomCriterion,changeRandomMinSample,changeRandomMaxDepth}) => {
+const RandomForest = ({setKey,changeRandomChoice,changeRandomEstimators,changeRandomCriterion,changeRandomMinSample,changeRandomMaxFeatures}) => {
 
 
   return (
@@ -26,8 +26,8 @@ const RandomForest = ({setKey,changeRandomChoice,changeRandomEstimators,changeRa
       <p className='self-start'>Minimum samples split</p>
       <input type='number' onChange={e=>changeRandomMinSample(setKey,e.target.value)}></input>
 
-      <p className='self-start'>Maximum depth</p>
-      <input type='number' onChange={e=>changeRandomMaxDepth(setKey,e.target.value)}></input>
+      <p className='self-start'>Maximum features</p>
+      <input type='number' onChange={e=>changeRandomMaxFeatures(setKey,e.target.value)}></input>
 
     </div>
   )

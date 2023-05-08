@@ -27,7 +27,7 @@ const NewComp = () => {
   }
   function addRandomForest()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'randomforest',choice:'Classifier',n_estimators:'100',criterion:'gini',min_sample_split:'2',max_depth:'10'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'randomforest',choice:'Classifier',n_estimators:'100',criterion:'gini',min_sample_split:'2',max_features:'10'}]})
   }
 
   function changeLogisticPenalty(key,penalty)
@@ -238,13 +238,13 @@ const NewComp = () => {
     })
     })
   }
-  function changeRandomMaxDepth(key,max_depth)
+  function changeRandomMaxFeatures(key,max_features)
   {
 
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
-          return {...layer,max_depth}
+          return {...layer,max_features}
         }
       return layer
     })
@@ -281,7 +281,7 @@ const NewComp = () => {
             }
             if(layer.type==='randomforest')
             {
-              return <RandomForest setKey={layer.key} changeRandomChoice={changeRandomChoice} changeRandomCriterion={changeRandomCriterion} changeRandomEstimators={changeRandomEstimators} changeRandomMaxDepth={changeRandomMaxDepth} changeRandomMinSample={changeRandomMinSample} />
+              return <RandomForest setKey={layer.key} changeRandomChoice={changeRandomChoice} changeRandomCriterion={changeRandomCriterion} changeRandomEstimators={changeRandomEstimators} changeRandomMaxFeatures={changeRandomMaxFeatures} changeRandomMinSample={changeRandomMinSample} />
             }
           })}
         </ul>
