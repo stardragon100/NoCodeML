@@ -69,6 +69,55 @@ const NewComp = () => {
     })
     })
   }
+  function changeKNNChoice(key,max_iter)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,max_iter}
+        }
+      return layer
+    })
+    })
+  }
+  function changeKNNNumber(key,max_iter)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,max_iter}
+        }
+      return layer
+    })
+    })
+  }
+  
+  function changeKNNAlgorithm(key,max_iter)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,max_iter}
+        }
+      return layer
+    })
+    })
+  }
+  function changeKNNWeights(key,max_iter)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,max_iter}
+        }
+      return layer
+    })
+    })
+  }
   return (
     <div className='m-12 flex flex-row-reverse gap-2'>
       <div className='w-48 h-48 border-dashed border-2 gap-1'>
@@ -90,7 +139,7 @@ const NewComp = () => {
             }
             if(layer.type==='knn')
             {
-              return <KNN setKey={layer.key}  />
+              return <KNN setKey={layer.key} changeKNNChoice={changeKNNChoice} changeKNNAlgorithm={changeKNNAlgorithm} changeKNNNumber={changeKNNNumber} changeKNNWeights={changeKNNNumber} />
             }
           })}
         </ul>
