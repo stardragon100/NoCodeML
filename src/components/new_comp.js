@@ -5,6 +5,10 @@ import Logistic_resgression from './Logistic_resgression.jsx'
 import KNN from './KNN.jsx'
 import KMeans from './KMeans.jsx'
 import RandomForest from './RandomForest.jsx'
+import Decision_tree from './Decision_tree.jsx'
+import Svm from './Svm.jsx'
+import Naive_bayes from './Naive_bayes.jsx'
+
 
 const NewComp = () => {
   const [layers,setLayers]=useState([])
@@ -29,7 +33,121 @@ const NewComp = () => {
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'randomforest',choice:'Classifier',n_estimators:'100',criterion:'gini',min_sample_split:'2',max_features:'10'}]})
   }
+  function addDecisionTree()
+  {
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'decision_tree',splitter:'best',min_samples_split:'2',random_state:''}]})
+  }
+  function addSvm()
+  {
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'svm',c:'1.0',kernel:'rbf',degree:'3',gamma:'scale',random_state:''}]})
+  }
+  function addNaiveBayes()
+  {
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'naive_bayes',estimator:''}]})
+  }
+  function changeDecisionSplitter(key,splitter)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,splitter}
+        }
+      return layer
+    })
+    })
+  }
+  function changeDecisionMinSamplesSplit(key,min_samples_split)
+  {
 
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,min_samples_split}
+        }
+      return layer
+    })
+    })
+  }
+  function changeDecisionRandomState(key,random_state)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,random_state}
+        }
+      return layer
+    })
+    })
+  }
+  function changeSvmC(key,C)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,C}
+        }
+      return layer
+    })
+    })
+  } 
+  function changeSvmKernel(key,kernel)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,kernel}
+        }
+      return layer
+    })
+    })
+  }
+  function changeSvmDegree(key,degree)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,degree}
+        }
+      return layer
+    })
+    })
+  }
+  function changeSvmGamma(key,gamma)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,gamma}
+        }
+      return layer
+    })
+    })
+  }
+  function changeSvmRandomState(key,random_state)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,random_state}
+        }
+      return layer
+    })
+    })
+  }
+  function changeNaiveBayesEstimator(key,estimator)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,estimator}
+        }
+      return layer
+    })
+    })
+  }
+  
+ 
   function changeLogisticPenalty(key,penalty)
   {
 
@@ -258,6 +376,9 @@ const NewComp = () => {
         <button className='w-44 border-2 m-1' onClick={()=>addKNN()}>KNN</button>
         <button className='w-44 border-2 m-1' onClick={()=>addKMeans()}>K-means</button>
         <button className='w-44 border-2 m-1' onClick={()=>addRandomForest()}>Random Forest</button>
+        <button className='w-44 border-2 m-1' onClick={()=>addDecisionTree()}>Decision Tree</button>
+        <button className='w-44 border-2 m-1' onClick={()=>addSvm()}>SVM</button>
+        <button className='w-44 border-2 m-1' onClick={()=>addNaiveBayes()}>Naive Bayes</button>
       </div>
         <ul className='h-48 flex flex-row gap-2 p-1'>
           {
@@ -282,6 +403,18 @@ const NewComp = () => {
             if(layer.type==='randomforest')
             {
               return <RandomForest setKey={layer.key} changeRandomChoice={changeRandomChoice} changeRandomCriterion={changeRandomCriterion} changeRandomEstimators={changeRandomEstimators} changeRandomMaxFeatures={changeRandomMaxFeatures} changeRandomMinSample={changeRandomMinSample} />
+            }
+            if(layer.type==='decision_tree')
+            {
+              return <Decision_tree setKey={layer.key} changeDecisionSplitter={changeDecisionSplitter} changeDecisionMinSamplesSplit={changeDecisionMinSamplesSplit} changeDecisionRandomState={changeDecisionRandomState}/>
+            }
+            if(layer.type==='svm')
+            {
+              return <Svm setKey={layer.key} changeSvmC={changeSvmC} changeSvmKernel={changeSvmKernel} changeSvmDegree={changeSvmDegree} changeSvmGamma={changeSvmGamma} changeSvmRandomState={changeSvmRandomState}/>
+            }
+            if(layer.type==='naive_bayes')
+            {
+              return <Naive_bayes setKey={layer.key} changeNaiveBayesEstimator={changeNaiveBayesEstimator} />
             }
           })}
         </ul>
