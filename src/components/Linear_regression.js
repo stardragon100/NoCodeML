@@ -1,8 +1,8 @@
 import React from 'react'
-
+import './style.css'
 const Linear_regression = (props) => {
   return (
-    <div className='flex flex-col h-32 w-44 border-2 p-2 bg-pink-200' key={props.setKey}>
+    <div className='flex flex-col h-16 w-96 border background-color-blue rounded-lg p-2 text-4xl' key={props.setKey}>
         Linear Regression
     </div>
   )

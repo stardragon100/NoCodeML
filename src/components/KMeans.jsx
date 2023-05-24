@@ -4,27 +4,29 @@ const KMeans = ({setKey,changeKMeansClusterNo,changeKMeansInit,changeKMeansInitN
 
 
   return (
-    <div className='flex flex-col h-72 w-44 border-2 p-2 bg-yellow-200 gap-1' key={setKey}>
+    <div className='flex flex-col w-96 border-2 rounded-lg background-color1 gap-1' key={setKey}>
+      <div className='background-color-blue'>
       K-means
+      </div>
+      <div className='flex flex-col w-80 place-self-center p-2 rounded-lg gap-1 interior'>
+        <p className='self-start rounded-lg'>No of clusters</p>
+        <input type='number' className='rounded-lg' onChange={e=>changeKMeansClusterNo(setKey,e.target.value)}></input>
 
-      <p className='self-start'>No of clusters</p>
-      <input type='number' onChange={e=>changeKMeansClusterNo(setKey,e.target.value)}></input>
+        <p className='self-start'>Initial cluster centroid</p>
+          <select name="init" id="init" className='border-1 rounded-lg h-10' onChange={e=>changeKMeansInit(setKey,e.target.value)}>
+              <option value="k-means++">k-means++</option>
+              <option value="random">Random</option>
+          </select>
 
-      <p className='self-start'>Initial cluster centroid</p>
-        <select name="init" id="init" className='border-1' onChange={e=>changeKMeansInit(setKey,e.target.value)}>
-            <option value="k-means++">k-means++</option>
-            <option value="random">Random</option>
-        </select>
+        <p className='self-start'>Times run on cluster centroids</p>
+        <input type='number' className='rounded-lg' onChange={e=>changeKMeansInitNo(setKey,e.target.value)}></input>
 
-      <p className='self-start'>Times run on cluster centroids</p>
-      <input type='number' onChange={e=>changeKMeansInitNo(setKey,e.target.value)}></input>
+        <p className='self-start'>Maximum iterations</p>
+        <input type='number' className='rounded-lg' onChange={e=>changeKMeansMaxIter(setKey,e.target.value)}></input>
 
-      <p className='self-start'>Maximum iterations</p>
-      <input type='number' onChange={e=>changeKMeansMaxIter(setKey,e.target.value)}></input>
-
-      <p className='self-start'>Random state</p>
-      <input type='number' onChange={e=>changeKMeansRandom(setKey,e.target.value)}></input>
-
+        <p className='self-start'>Random state</p>
+        <input type='number' className='rounded-lg' onChange={e=>changeKMeansRandom(setKey,e.target.value)}></input>
+      </div>
     </div>
   )
 }

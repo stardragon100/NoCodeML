@@ -1,0 +1,27 @@
+.background-color-blue{
+    background-color: #2B59FF;
+    border-color: #2B59FF;
+    font-weight: 700;
+    font-family: 'Poppins';
+}
+.background-color1{
+    background-color: #1F1F1F;
+    border: 2px solid #2B59FF;
+    box-shadow: 5px 5px 50px 5px rgba(43, 89, 255, 0.4);
+    border-radius: 0.5rem;
+}
+.interior{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+.interior select{
+    color: #1F1F1F;
+    border-radius: 0.5rem;
+}
+iinterior input{
+    color: #1F1F1F;
+    border-radius: 0.5rem;
+}

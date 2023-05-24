@@ -5,19 +5,22 @@ const Decision_Tree = ({setKey,changeDecisionSplitter,changeDecisionMinSamplesSp
             changeDecisionSplitter(key,value)
         }
   return (
-    <div className='flex flex-col h-72 w-44 border-2 p-2 bg-blue-200 gap-1' key={setKey}>
+    <div className='flex flex-col w-96 border-2 rounded-lg background-color1' key={setKey}>
+        <div className='background-color-blue'>
         Decision Tree
-        <p className='self-start'>Splitter</p>
-        
-        <select name="splitter" id="splitter" className='border-1' onChange={e=>changeSplitter(setKey,e.target.value)}>
-            <option value="best">best</option>
-            <option value="random">random</option>
-        </select>
-        <p className='self-start'>Min Samples Split</p>
-        <input type='number' onChange={e=>changeDecisionMinSamplesSplit(setKey,e.target.value)}></input>
-        <p className='self-start'>Random State</p>
-        <input type='number' onChange={e=>changeDecisionRandomState(setKey,e.target.value)}></input>
-    
+        </div>
+        <div className='flex flex-col w-80 place-self-center p-2 rounded-lg gap-1 interior'>
+            <p className='self-start'>Splitter</p>
+            
+            <select name="splitter" id="splitter" className='border-1 h-10' onChange={e=>changeSplitter(setKey,e.target.value)}>
+                <option value="best">best</option>
+                <option value="random">random</option>
+            </select>
+            <p className='self-start'>Min Samples Split</p>
+            <input type='number' className='rounded-lg' onChange={e=>changeDecisionMinSamplesSplit(setKey,e.target.value)}></input>
+            <p className='self-start'>Random State</p>
+            <input type='number' className='rounded-lg' onChange={e=>changeDecisionRandomState(setKey,e.target.value)}></input>
+        </div>
     </div>
   )
 }

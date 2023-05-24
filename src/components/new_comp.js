@@ -8,7 +8,7 @@ import RandomForest from './RandomForest.jsx'
 import Decision_tree from './Decision_tree.jsx'
 import Svm from './Svm.jsx'
 import Naive_bayes from './Naive_bayes.jsx'
-
+import './style.css' 
 
 const NewComp = () => {
   const [layers,setLayers]=useState([])
@@ -370,17 +370,17 @@ const NewComp = () => {
   }
   return (
     <div className='m-12 flex flex-row-reverse gap-2'>
-      <div className='w-48 h-48 border-dashed border-2 gap-1'>
-        <button className='w-44 border-2 m-1' onClick={()=>addLinearRegression()}>LinearRegression</button>
-        <button className='w-44 border-2 m-1' onClick={()=>addLogisticRegression()}>LogisticRegression</button>
-        <button className='w-44 border-2 m-1' onClick={()=>addKNN()}>KNN</button>
-        <button className='w-44 border-2 m-1' onClick={()=>addKMeans()}>K-means</button>
-        <button className='w-44 border-2 m-1' onClick={()=>addRandomForest()}>Random Forest</button>
-        <button className='w-44 border-2 m-1' onClick={()=>addDecisionTree()}>Decision Tree</button>
-        <button className='w-44 border-2 m-1' onClick={()=>addSvm()}>SVM</button>
-        <button className='w-44 border-2 m-1' onClick={()=>addNaiveBayes()}>Naive Bayes</button>
+      <div className='w-96 py-2 border-dashed border-2 gap-1 text-4xl rounded-lg background-color1'>
+        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addLinearRegression()}>LinearRegression</button>
+        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addLogisticRegression()}>LogisticRegression</button>
+        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addKNN()}>KNN</button>
+        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addKMeans()}>K-means</button>
+        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addRandomForest()}>Random Forest</button>
+        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addDecisionTree()}>Decision Tree</button>
+        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addSvm()}>SVM</button>
+        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addNaiveBayes()}>Naive Bayes</button>
       </div>
-        <ul className='h-48 flex flex-row gap-2 p-1'>
+        <ul className='flex flex-row text-4xl gap-2 p-1'>
           {
             layers.map(layer=>
             {
@@ -394,7 +394,7 @@ const NewComp = () => {
             }
             if(layer.type==='knn')
             {
-              return <KNN setKey={layer.key} changeKNNChoice={changeKNNChoice} changeKNNAlgorithm={changeKNNAlgorithm} changeKNNNumber={changeKNNNumber} changeKNNWeights={changeKNNNumber} />
+              return <KNN setKey={layer.key} changeKNNChoice={changeKNNChoice} changeKNNAlgorithm={changeKNNAlgorithm} changeKNNNumber={changeKNNNumber} changeKNNWeights={changeKNNWeights} />
             }
             if(layer.type==='kmeans')
             {
