@@ -5,8 +5,8 @@ const Svm = ({setKey,changeSvmC,changeSvmKernel,changeSvmDegree,changeSvmGamma,c
        //     changeSvmKernel(key,value)
        // }
   return (
-    <div className='flex flex-col w-96 border-2 p-2 background-color1 gap-1' key={setKey}>
-        <div className='background-color-blue'>
+    <div className='flex flex-col w-96 border-2 background-color1 gap-1' key={setKey}>
+        <div className='background-color-blue p-2'>
         SVM
         </div>
         <div className='flex flex-col w-80 place-self-center p-2 rounded-lg gap-1 interior'>

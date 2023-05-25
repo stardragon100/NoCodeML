@@ -6,7 +6,7 @@ const Decision_Tree = ({setKey,changeDecisionSplitter,changeDecisionMinSamplesSp
         }
   return (
     <div className='flex flex-col w-96 border-2 rounded-lg background-color1' key={setKey}>
-        <div className='background-color-blue'>
+        <div className='background-color-blue p-2'>
         Decision Tree
         </div>
         <div className='flex flex-col w-80 place-self-center p-2 rounded-lg gap-1 interior'>

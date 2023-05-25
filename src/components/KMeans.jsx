@@ -5,7 +5,7 @@ const KMeans = ({setKey,changeKMeansClusterNo,changeKMeansInit,changeKMeansInitN
 
   return (
     <div className='flex flex-col w-96 border-2 rounded-lg background-color1 gap-1' key={setKey}>
-      <div className='background-color-blue'>
+      <div className='background-color-blue p-2'>
       K-means
       </div>
       <div className='flex flex-col w-80 place-self-center p-2 rounded-lg gap-1 interior'>

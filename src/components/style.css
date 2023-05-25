@@ -1,8 +1,10 @@
 .background-color-blue{
     background-color: #2B59FF;
     border-color: #2B59FF;
-    font-weight: 700;
+    font-weight: 500;
     font-family: 'Poppins';
+    font-size: 2rem;
+    color: #FFFFFF;
 }
 .background-color1{
     background-color: #1F1F1F;
@@ -21,7 +23,7 @@
     color: #1F1F1F;
     border-radius: 0.5rem;
 }
-iinterior input{
+.interior input{
     color: #1F1F1F;
     border-radius: 0.5rem;
 }

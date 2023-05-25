@@ -13,38 +13,47 @@ import './style.css'
 
 const NewComp = () => {
   const [layers,setLayers]=useState([{key:crypto.randomUUID(),type:'preprocess',scaler:'StandardScaler'}])
+  const [output,setOutput]=useState(true)
   console.log(layers)  
   function addLinearRegression()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'linear_regression'}]})
+    setOutput(false)
   }
   function addLogisticRegression()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'logistic_regression',class_weight:'Balanced',penalty:'l2',random_state:'none',max_iter:'default'}]})
+    setOutput(false)
   }
   function addKNN()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'knn',choice:'Classifier',number_neighbours:'5',algorithm:'auto',weights:'uniform'}]})
+    setOutput(false)
   }
   function addKMeans()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'kmeans',n_clusters:'8',init:'k-means++',n_init:'10',max_iter:'300',random_state:'0'}]})
+    setOutput(false)
   }
   function addRandomForest()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'randomforest',choice:'Classifier',n_estimators:'100',criterion:'gini',min_sample_split:'2',max_features:'10'}]})
+    setOutput(false)
   }
   function addDecisionTree()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'decision_tree',splitter:'best',min_samples_split:'2',random_state:''}]})
+    setOutput(false)
   }
   function addSvm()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'svm',c:'1.0',kernel:'rbf',degree:'3',gamma:'scale',random_state:''}]})
+    setOutput(false)
   }
   function addNaiveBayes()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'naive_bayes',estimator:''}]})
+    setOutput(false)
   }
   function changeDecisionSplitter(key,splitter)
   {
@@ -382,22 +391,27 @@ const NewComp = () => {
   }
   return (
     <div className='m-12 flex flex-row-reverse gap-2'>
-      <div className='w-96 py-2 border-dashed border-2 gap-1 text-4xl rounded-lg background-color1'>
-        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addLinearRegression()}>LinearRegression</button>
-        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addLogisticRegression()}>LogisticRegression</button>
-        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addKNN()}>KNN</button>
-        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addKMeans()}>K-means</button>
-        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addRandomForest()}>Random Forest</button>
-        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addDecisionTree()}>Decision Tree</button>
-        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addSvm()}>SVM</button>
-        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addNaiveBayes()}>Naive Bayes</button>
-      </div>
+      {
+        output?
+          (<div className='w-96 py-2 border-dashed border-2 gap-1 text-4xl rounded-lg background-color1'>
+            <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addLinearRegression()}>Linear Regression</button>
+            <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addLogisticRegression()}>Logistic Regression</button>
+            <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addKNN()}>KNN</button>
+            <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addKMeans()}>K-means</button>
+            <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addRandomForest()}>Random Forest</button>
+            <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addDecisionTree()}>Decision Tree</button>
+            <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addSvm()}>SVM</button>
+            <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addNaiveBayes()}>Naive Bayes</button>
+          </div>):(<Preprocess setKey={layers.key} changePreprocess={changePreprocess}/>)
+          
+        }
         <ul className='flex flex-row text-4xl gap-2 p-1'>
           {
             layers.map(layer=>
             {
               if(layer.type==='preprocess')
               {
+
                 return <Preprocess setKey={layer.key} changePreprocess={changePreprocess}/>
               }
               if(layer.type==='linear_regression')
