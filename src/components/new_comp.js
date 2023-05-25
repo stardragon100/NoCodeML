@@ -8,11 +8,12 @@ import RandomForest from './RandomForest.jsx'
 import Decision_tree from './Decision_tree.jsx'
 import Svm from './Svm.jsx'
 import Naive_bayes from './Naive_bayes.jsx'
+import Preprocess from './preprocess.jsx'
 import './style.css' 
 
 const NewComp = () => {
-  const [layers,setLayers]=useState([])
-  console.log(layers)
+  const [layers,setLayers]=useState([{key:crypto.randomUUID(),type:'preprocess',scaler:'StandardScaler'}])
+  console.log(layers)  
   function addLinearRegression()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'linear_regression'}]})
@@ -368,6 +369,17 @@ const NewComp = () => {
     })
     })
   }
+  function changePreprocess(key,scaler)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,scaler}
+        }
+      return layer
+    })
+    })
+  }
   return (
     <div className='m-12 flex flex-row-reverse gap-2'>
       <div className='w-96 py-2 border-dashed border-2 gap-1 text-4xl rounded-lg background-color1'>
@@ -384,6 +396,10 @@ const NewComp = () => {
           {
             layers.map(layer=>
             {
+              if(layer.type==='preprocess')
+              {
+                return <Preprocess setKey={layer.key} changePreprocess={changePreprocess}/>
+              }
               if(layer.type==='linear_regression')
             {
               return <Linear_regression setKey={layer.key} />
