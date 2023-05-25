@@ -7,7 +7,7 @@ const Logistic_resgression = ({setKey,changeLogisticPenalty,changeLogisticClassW
   return (
     <div className='flex flex-col w-96 border-2 background-color1 gap-1' key={setKey}>
         <div className='background-color-blue'>
-        Logistic Resgression
+        Logistic Regression
         </div>
         
         <div className='flex flex-col w-80 place-self-center p-2 rounded-lg gap-1 interior'>
