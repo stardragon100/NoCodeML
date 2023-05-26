@@ -9,51 +9,64 @@ import Decision_tree from './Decision_tree.jsx'
 import Svm from './Svm.jsx'
 import Naive_bayes from './Naive_bayes.jsx'
 import Preprocess from './preprocess.jsx'
+import Output from './Output.jsx'
 import './style.css' 
 
 const NewComp = () => {
   const [layers,setLayers]=useState([{key:crypto.randomUUID(),type:'preprocess',scaler:'StandardScaler'}])
   const [output,setOutput]=useState(true)
   console.log(layers)  
+  function addOutput()
+  {
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'output',fileName:'output.pkl'}]})
+  }
   function addLinearRegression()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'linear_regression'}]})
     setOutput(false)
+    addOutput()
   }
   function addLogisticRegression()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'logistic_regression',class_weight:'Balanced',penalty:'l2',random_state:'none',max_iter:'default'}]})
     setOutput(false)
+    addOutput()
   }
   function addKNN()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'knn',choice:'Classifier',number_neighbours:'5',algorithm:'auto',weights:'uniform'}]})
     setOutput(false)
+    addOutput()
   }
   function addKMeans()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'kmeans',n_clusters:'8',init:'k-means++',n_init:'10',max_iter:'300',random_state:'0'}]})
     setOutput(false)
+    addOutput()
   }
   function addRandomForest()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'randomforest',choice:'Classifier',n_estimators:'100',criterion:'gini',min_sample_split:'2',max_features:'10'}]})
     setOutput(false)
+    addOutput()
   }
   function addDecisionTree()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'decision_tree',splitter:'best',min_samples_split:'2',random_state:''}]})
     setOutput(false)
+    addOutput()
   }
   function addSvm()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'svm',c:'1.0',kernel:'rbf',degree:'3',gamma:'scale',random_state:''}]})
     setOutput(false)
+    addOutput()
   }
   function addNaiveBayes()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'naive_bayes',estimator:''}]})
     setOutput(false)
+    addOutput()
   }
   function changeDecisionSplitter(key,splitter)
   {
@@ -378,6 +391,17 @@ const NewComp = () => {
     })
     })
   }
+  function changeOutputFileName(key,fileName)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,fileName}
+        }
+      return layer
+    })
+    })
+  }
   function changePreprocess(key,scaler)
   {
     setLayers(currentLayers => {
@@ -402,7 +426,7 @@ const NewComp = () => {
             <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addDecisionTree()}>Decision Tree</button>
             <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addSvm()}>SVM</button>
             <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addNaiveBayes()}>Naive Bayes</button>
-          </div>):(<Preprocess setKey={layers.key} changePreprocess={changePreprocess}/>)
+          </div>):(<></>)
           
         }
         <ul className='flex flex-row text-4xl gap-2 p-1'>
@@ -446,6 +470,11 @@ const NewComp = () => {
             {
               return <Naive_bayes setKey={layer.key} changeNaiveBayesEstimator={changeNaiveBayesEstimator} />
             }
+            if(layer.type==='output')
+              {
+
+                return <Output setKey={layer.key} changeOutputFileName={changeOutputFileName}/>
+              }
           })}
         </ul>
     </div>
