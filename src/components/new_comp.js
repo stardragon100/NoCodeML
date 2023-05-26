@@ -9,11 +9,13 @@ import Decision_tree from './Decision_tree.jsx'
 import Svm from './Svm.jsx'
 import Naive_bayes from './Naive_bayes.jsx'
 import Preprocess from './preprocess.jsx'
+import Input from './Input.jsx'
 import Output from './Output.jsx'
 import './style.css' 
 
 const NewComp = () => {
-  const [layers,setLayers]=useState([{key:crypto.randomUUID(),type:'preprocess',scaler:'StandardScaler'}])
+  const [layers,setLayers]=useState([{key:crypto.randomUUID(),type:'input',filename:'',inbuilt:'',testsize:'',randomstate:''},{key:crypto.randomUUID(),type:'preprocess',scaler:'StandardScaler'}])
+
   const [output,setOutput]=useState(true)
   console.log(layers)  
   function addOutput()
@@ -413,6 +415,54 @@ const NewComp = () => {
     })
     })
   }
+  function changeInputFileName(key,file_name)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,file_name}
+        }
+      return layer
+    })
+    })
+  }
+  function changeInputInbuilt(key,inbuilt)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,inbuilt}
+        }
+      return layer
+    })
+    })
+  }
+  function changeInputTestSize(key,testsize)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,testsize}
+        }
+      return layer
+    })
+    })
+  }
+  function changeInputRandomState(key,inputrandomstate)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,inputrandomstate}
+        }
+      return layer
+    })
+    })
+  }
   return (
     <div className='m-12 flex flex-row-reverse gap-2'>
       {
@@ -433,9 +483,12 @@ const NewComp = () => {
           {
             layers.map(layer=>
             {
+              if(layer.type==='input')
+            {
+               return <Input setKey={layer.key} changeInputFileName={changeInputFileName} changeInputInbuilt={changeInputInbuilt} changeInputTestSize={changeInputTestSize} changeInputRandomState={changeInputRandomState}/>
+            }
               if(layer.type==='preprocess')
               {
-
                 return <Preprocess setKey={layer.key} changePreprocess={changePreprocess}/>
               }
               if(layer.type==='linear_regression')
