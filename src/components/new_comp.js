@@ -414,7 +414,7 @@ const NewComp = () => {
     })
   }
   return (
-    <div className='m-12 flex flex-row-reverse gap-2'>
+    <div className='m-12 flex flex-row-reverse place-content-start gap-2'>
       {
         output?
           (<div className='w-96 py-2 border-dashed border-2 gap-1 text-4xl rounded-lg background-color1'>
