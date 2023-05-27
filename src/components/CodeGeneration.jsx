@@ -1,12 +1,14 @@
 import React from 'react'
-import linearRegression from './codeGeneration/LinearRegression'
+import linearRegression from './codeGeneration/CGLinearRegression'
+import SVM from './codeGeneration/CGSVM'
 //give import statements of all functions
 
 function createCode(data){
- 
+  var imports
+  var code
   data.map(layer=>
     { 
-        if(layer.type==='input')
+        /*if(layer.type==='input')
         {
           input(layer)
         }
@@ -14,11 +16,13 @@ function createCode(data){
         {
           preprocess(layer)
         }
-        else if(layer.type==='linear_regression')
+        else*/ if(layer.type==='linear_regression')
         {  
-          linearRegression(layer)
+          var temp=linearRegression(layer)
+          imports=temp.import
+          code=temp.code
         }
-        else if(layer.type==='logistic_regression')
+        /*else if(layer.type==='logistic_regression')
         {
           logisticRegression(layer)
         }
@@ -38,10 +42,14 @@ function createCode(data){
         {
           decisionTree(layer)
         }
-        else if(layer.type==='svm')
+        else*/ if(layer.type==='svm')
         {
-          svm(layer)
-        }
+          var temp=SVM(layer)
+          imports=temp.import
+          code=temp.code
+          console.log(imports)
+          console.log(code)
+        }/*
         else if(layer.type==='naive_bayes')
         {
           naiveBayes(layer)
@@ -49,7 +57,7 @@ function createCode(data){
         else if(layer.type==='output')
           {
             output(layer)
-          }
+          }*/
     })
   
 }
