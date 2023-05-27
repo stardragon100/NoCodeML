@@ -1,5 +1,5 @@
 import './App.css';
-import Main_area from './components/main_area.js';
+import Main_area from './components/main_area.jsx';
 
 function App() {
   return (

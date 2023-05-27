@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import Linear_regression from './Linear_regression.js'
+import Linear_regression from './Linear_regression.jsx'
 import Logistic_resgression from './Logistic_resgression.jsx'
 import KNN from './KNN.jsx'
 import KMeans from './KMeans.jsx'
@@ -8,9 +8,9 @@ import RandomForest from './RandomForest.jsx'
 import Decision_tree from './Decision_tree.jsx'
 import Svm from './Svm.jsx'
 import Naive_bayes from './Naive_bayes.jsx'
-import Preprocess from './preprocess.jsx'
+import Preprocess from './Preprocess.jsx'
 import Input from './Input.jsx'
-import CodeGenearation from './CodeGeneration.jsx'
+import CodeGeneration from './CodeGeneration.jsx'
 import Output from './Output.jsx'
 import './style.css' 
 
@@ -18,6 +18,7 @@ const NewComp = () => {
   const [layers,setLayers]=useState([{key:crypto.randomUUID(),type:'input',filename:'',inbuilt:'',testsize:'',randomstate:''},{key:crypto.randomUUID(),type:'preprocess',scaler:'StandardScaler'}])
   const [output,setOutput]=useState(true)
   console.log(layers)  
+  
   function addOutput()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'output',fileName:'output.pkl'}]})
@@ -463,6 +464,7 @@ const NewComp = () => {
     })
     })
   }
+  
   return (
     <div className='flex flex-col'>
       <div className='m-12 flex flex-row-reverse place-content-start gap-2'>
@@ -532,7 +534,8 @@ const NewComp = () => {
             })}
           </ul>
       </div>
-      <CodeGenearation/>
+      
+      <CodeGeneration data={layers}/>
     </div>
   )
 }

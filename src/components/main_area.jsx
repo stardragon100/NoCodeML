@@ -1,5 +1,5 @@
 import React from 'react'
-import NewComp from './new_comp.js'
+import NewComp from './new_comp.jsx'
 
 const main_area = () => {
   return (
