@@ -1,11 +1,13 @@
 import React from 'react'
-function generateLinearRegression(){
-
+import linearRegression from './codeGenneartion/LinearRegression'
+function createCode(data){
+    console.log(data);
+    linearRegression(data);
 }
-const CodeGeneration = () => {
+const CodeGeneration = ({data}) => {
   return (
     <div>
-        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>generateLinearRegression()}>Generate Code</button>
+        <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>createCode(data)}>Generate Code</button>
 
     </div>
   )
