@@ -8,10 +8,11 @@ import RandomForest from './RandomForest.jsx'
 import Decision_tree from './Decision_tree.jsx'
 import Svm from './Svm.jsx'
 import Naive_bayes from './Naive_bayes.jsx'
-import Preprocess from './preprocess.jsx'
+import Preprocess from './Preprocess.jsx'
 import Input from './Input.jsx'
 import CodeGeneration from './CodeGeneration.jsx'
-import Output from './Output.jsx'
+//import Output from './Output.jsx'
+//import Output1 from './Output1.jsx'
 import './style.css' 
 
 const NewComp = () => {
@@ -55,19 +56,19 @@ const NewComp = () => {
   }
   function addDecisionTree()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'decision_tree',splitter:'best',min_samples_split:'2',random_state:''}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'decision_tree',splitter:'best',min_samples_split:'2',random_state:'none'}]})
     setOutput(false)
     addOutput()
   }
   function addSvm()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'svm',c:'1.0',kernel:'rbf',degree:'3',gamma:'scale',random_state:''}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'svm',c:'1.0',kernel:'rbf',degree:'3',gamma:'scale',random_state:'none'}]})
     setOutput(false)
     addOutput()
   }
   function addNaiveBayes()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'naive_bayes',estimator:''}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'naive_bayes',estimator:'GaussianNB'}]})
     setOutput(false)
     addOutput()
   }
@@ -528,8 +529,8 @@ const NewComp = () => {
               }
               if(layer.type==='output')
                 {
-
-                  return <Output setKey={layer.key} changeOutputFileName={changeOutputFileName}/>
+                 // return <Output1 setKey={layer.key}/>
+                 // return <Output setKey={layer.key} changeOutputFileName={changeOutputFileName}/>
                 }
             })}
           </ul>

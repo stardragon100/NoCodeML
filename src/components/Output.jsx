@@ -9,8 +9,6 @@ const Output = ({setKey,changeOutputFileName}) => {
         <div className='flex flex-col w-80 place-self-center p-2 rounded-lg gap-1 interior'>
           <p className='self-start'>File name</p>
           <input type='text' className='rounded-lg' onChange={e=>changeOutputFileName(setKey,e.target.value)}></input>
-
-          
         </div>
     </div>
   )
