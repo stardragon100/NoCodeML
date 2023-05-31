@@ -16,7 +16,7 @@ import CodeGeneration from './CodeGeneration.jsx'
 import './style.css' 
 
 const NewComp = () => {
-  const [layers,setLayers]=useState([{key:crypto.randomUUID(),type:'input',filename:'',inbuilt:'',testsize:'',randomstate:''},{key:crypto.randomUUID(),type:'preprocess',scaler:'StandardScaler'}])
+  const [layers,setLayers]=useState([{key:crypto.randomUUID(),type:'input',filename:'read.csv',inbuilt:'',testsize:'30',randomstate:'none'},{key:crypto.randomUUID(),type:'preprocess',scaler:'StandardScaler'}])
   const [output,setOutput]=useState(true)
   console.log(layers)  
   
@@ -89,6 +89,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(min_samples_split==="")
+            min_samples_split='2'
           return {...layer,min_samples_split}
         }
       return layer
@@ -101,6 +103,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(random_state==="")
+             random_state='none'
           return {...layer,random_state}
         }
       return layer
@@ -112,6 +116,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(C==="")
+             C='1.0'
           return {...layer,C}
         }
       return layer
@@ -134,6 +140,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(degree==="")
+             degree='3'
           return {...layer,degree}
         }
       return layer
@@ -156,6 +164,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(random_state==="")
+             random_state='none'
           return {...layer,random_state}
         }
       return layer
@@ -207,6 +217,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(random_state==="")
+             random_state='none'
           return {...layer,random_state}
         }
       return layer
@@ -219,6 +231,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(max_iter==="")
+             max_iter='none'
           return {...layer,max_iter}
         }
       return layer
@@ -243,6 +257,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(number_neighbours==="")
+             number_neighbours='5'
           return {...layer,number_neighbours}
         }
       return layer
@@ -280,6 +296,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(n_clusters==="")
+             n_clusters='8'
           return {...layer,n_clusters}
         }
       return layer
@@ -304,6 +322,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(n_init==="")
+             n_init='10'
           return {...layer,n_init}
         }
       return layer
@@ -316,6 +336,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(random_state==="")
+             random_state='none'
           return {...layer,random_state}
         }
       return layer
@@ -328,6 +350,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(max_iter==="")
+             max_iter='300'
           return {...layer,max_iter}
         }
       return layer
@@ -353,6 +377,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(n_estimators==="")
+             n_estimators='100'
           return {...layer,n_estimators}
         }
       return layer
@@ -377,6 +403,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(min_sample_split==="")
+            min_sample_split='2'
           return {...layer,min_sample_split}
         }
       return layer
@@ -389,6 +417,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(max_features==="")
+             max_features='10'
           return {...layer,max_features}
         }
       return layer
@@ -400,6 +430,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(fileName==="")
+             fileName='f1.txt'
           return {...layer,fileName}
         }
       return layer
@@ -423,6 +455,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(file_name==="")
+             file_name='read.csv'
           return {...layer,file_name}
         }
       return layer
@@ -447,6 +481,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(testsize==="")
+             testsize='30'
           return {...layer,testsize}
         }
       return layer
@@ -459,6 +495,8 @@ const NewComp = () => {
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
+        if(inputrandomstate==="")
+             inputrandomstate='none'
           return {...layer,inputrandomstate}
         }
       return layer
