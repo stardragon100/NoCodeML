@@ -16,7 +16,7 @@ import CodeGeneration from './CodeGeneration.jsx'
 import './style.css' 
 
 const NewComp = () => {
-  const [layers,setLayers]=useState([{key:crypto.randomUUID(),type:'input',filename:'',inbuilt:'',testsize:'',randomstate:''},{key:crypto.randomUUID(),type:'preprocess',scaler:'StandardScaler'}])
+  const [layers,setLayers]=useState([{key:crypto.randomUUID(),type:'input',filename:'read.csv',inbuilt:'',testsize:'30',randomstate:'none'},{key:crypto.randomUUID(),type:'preprocess',scaler:'StandardScaler'}])
   const [output,setOutput]=useState(true)
   console.log(layers)  
   
