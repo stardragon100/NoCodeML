@@ -4,8 +4,8 @@ const CodeSection=({imports,code}) =>{
     
     <div className='flex flex-col border-2 background-color1 gap-1'>
         <div className='flex flex-col p-2 rounded-lg gap-1 interior'>
-        <p className='self-start '>
-                {imports[0].split('\n').map(str => <p>{str}</p>)}                
+        <p className='flex flex-col self-start '>
+                {imports[0].split('\n').map(str => <p className='self-start'>{str}</p>)}                
          </p>
          <p className='self-start'>
                 {code}
