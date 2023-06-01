@@ -10,10 +10,11 @@ import naiveBayes from './codeGeneration/CGNaiveBayes'
 import { useState } from 'react'
 import CodeSection from './CodeSection'
 import inputs from './codeGeneration/CGInput'
-//import Output from './Output'
+import preprocess from './codeGeneration/CGPreprocess'
+import outPut from './codeGeneration/CGOutput'
 
 
-const CodeGeneration = ({data}) => {
+const CodeGeneration = ({data,selectedOption}) => {
   
   const [completed,setCompleted]=useState(false)
   const [imports,setImports]=useState('')
@@ -30,16 +31,16 @@ function createCode(data){
     { 
         if(layer.type==='input')
         {
-          var temp=inputs(layer)
+          var temp=inputs(layer,selectedOption)
           console.log(temp)
           setImports(temp.imports)
         }
-        /*
+        
         else if(layer.type==='preprocess')
         {
           preprocess(layer)
         }
-        else*/ if(layer.type==='linear_regression')
+        else if(layer.type==='linear_regression')
         {  
           var temp=linearRegression(layer)
           //setImports(imports+temp.imports)
@@ -103,11 +104,11 @@ function createCode(data){
           console.log(imports)
           console.log(code)
         }
-        /*
+        
         else if(layer.type==='output')
           {
-            output(layer)
-          }*/
+            outPut(layer)
+          }
         handleCompleted()
         })
 }
