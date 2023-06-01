@@ -1,18 +1,14 @@
 import React from 'react'
-import { useState } from 'react'
 import RadioButtonGroup from './radiobutton';
-const Input = ({setKey,changeInputFileName,changeInputInbuilt,changeInputTestSize,changeInputRandomState}) => {
-  const [selectedOption, setSelectedOption] = useState('option1');
-  function handleChange(event) {
-    setSelectedOption(event.target.value);
-  }
+const Input = ({setKey,selectedOption,handleInputChange,changeInputFileName,changeInputFileInteger,changeInputInbuilt,changeInputTestSize,changeInputRandomState}) => {
+  
   return (
     <div className='flex flex-col w-96 border-2 rounded-lg background-color1 gap-1' key={setKey}>
       <div className='background-color-blue p-2'>
       INPUT
       </div>
       
-        <RadioButtonGroup selectedOption={selectedOption} handleChange={handleChange} />
+        <RadioButtonGroup selectedOption={selectedOption} handleInputChange={handleInputChange} />
 
     <div className='flex flex-col w-80 place-self-center p-2 rounded-lg gap-1 interior'>
     {(selectedOption==='option1')?
@@ -20,7 +16,9 @@ const Input = ({setKey,changeInputFileName,changeInputInbuilt,changeInputTestSiz
       <div>
         <p className='self-start rounded-lg'>Upload File</p>
         <input type='text' className='rounded-lg' onChange={e=>changeInputFileName(setKey,e.target.value)}></input>
-        </div>
+        <p className='self-start rounded-lg'>Integer location</p>
+        <input type='number' className='rounded-lg' onChange={e=>changeInputFileInteger(setKey,e.target.value)}></input>
+      </div>
     )
     :
     ( <div><p className='self-start'>In-built</p>

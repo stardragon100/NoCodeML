@@ -16,10 +16,13 @@ import CodeGeneration from './CodeGeneration.jsx'
 import './style.css' 
 
 const NewComp = () => {
-  const [layers,setLayers]=useState([{key:crypto.randomUUID(),type:'input',filename:'read.csv',inbuilt:'',testsize:'30',randomstate:'none'},{key:crypto.randomUUID(),type:'preprocess',scaler:'StandardScaler'}])
+  const [layers,setLayers]=useState([{key:crypto.randomUUID(),type:'input',filename:'read.csv',iloc:'0',inbuilt:'iris_plant',testsize:'30',randomstate:'none'},{key:crypto.randomUUID(),type:'preprocess',scaler:'StandardScaler'}])
   const [output,setOutput]=useState(true)
   console.log(layers)  
-  
+  const [selectedOption, setSelectedOption] = useState('option1');
+  function handleInputChange(event) {
+    setSelectedOption(event.target.value);
+  }
   function addOutput()
   {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'output',fileName:'output.pkl'}]})
@@ -503,7 +506,20 @@ const NewComp = () => {
     })
     })
   }
-  
+  function changeInputFileInteger(key,iloc)
+  {
+
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+        if(iloc==="")
+             iloc='0'
+          return {...layer,iloc}
+        }
+      return layer
+    })
+    })
+  }
   return (
     <div className='flex flex-col'>
       <div className='m-12 flex flex-row-reverse place-content-start gap-2'>
@@ -527,7 +543,7 @@ const NewComp = () => {
               {
                 if(layer.type==='input')
               {
-                return <Input setKey={layer.key} changeInputFileName={changeInputFileName} changeInputInbuilt={changeInputInbuilt} changeInputTestSize={changeInputTestSize} changeInputRandomState={changeInputRandomState}/>
+                return <Input setKey={layer.key} selectedOption={selectedOption} handleInputChange={handleInputChange} changeInputFileName={changeInputFileName} changeInputFileInteger={changeInputFileInteger} changeInputInbuilt={changeInputInbuilt} changeInputTestSize={changeInputTestSize} changeInputRandomState={changeInputRandomState}/>
               }
                 if(layer.type==='preprocess')
                 {
@@ -573,8 +589,7 @@ const NewComp = () => {
             })}
           </ul>
       </div>
-      
-      <CodeGeneration data={layers}/>
+      <CodeGeneration data={layers} selectedOption={selectedOption}/>
     </div>
   )
 }
