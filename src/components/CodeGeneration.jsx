@@ -9,6 +9,7 @@ import randomForest from './codeGeneration/CGRandomForest'
 import naiveBayes from './codeGeneration/CGNaiveBayes'
 import { useState } from 'react'
 import CodeSection from './CodeSection'
+import inputs from './codeGeneration/CGInput'
 //import Output from './Output'
 
 
@@ -27,10 +28,13 @@ const CodeGeneration = ({data}) => {
 function createCode(data){
   data.map(layer=>
     { 
-        /*if(layer.type==='input')
+        if(layer.type==='input')
         {
-          input(layer)
+          var temp=inputs(layer)
+          console.log(temp)
+          setImports(temp.imports)
         }
+        /*
         else if(layer.type==='preprocess')
         {
           preprocess(layer)
@@ -38,7 +42,7 @@ function createCode(data){
         else*/ if(layer.type==='linear_regression')
         {  
           var temp=linearRegression(layer)
-          setImports(temp.imports)
+          setImports(imports+temp.imports)
           setCode(temp.code)
           console.log(imports)
           console.log(code)
@@ -46,7 +50,7 @@ function createCode(data){
         else if(layer.type==='logistic_regression')
         {
           var temp=logisticRegression(layer)
-          setImports(temp.imports)
+          setImports(imports+temp.imports)
           setCode(temp.code)
           console.log(imports)
           console.log(code)
@@ -54,7 +58,7 @@ function createCode(data){
         else if(layer.type==='knn')
         {
           var temp=kNN(layer)
-          setImports(temp.imports)
+          setImports(imports+temp.imports)
           setCode(temp.code)
           console.log(imports)
           console.log(code)
@@ -62,7 +66,7 @@ function createCode(data){
         else if(layer.type==='kmeans')
         {
           var temp=kMeans(layer)
-          setImports(temp.imports)
+          setImports(imports+temp.imports)
           setCode(temp.code)
           console.log(imports)
           console.log(code)
@@ -70,7 +74,7 @@ function createCode(data){
         else if(layer.type==='randomforest')
         {
           var temp=randomForest(layer)
-          setImports(temp.imports)
+          setImports(imports+temp.imports)
           setCode(temp.code)
           console.log(imports)
           console.log(code)
@@ -78,7 +82,7 @@ function createCode(data){
         else if(layer.type==='decision_tree')
         {
           var temp=decisionTree(layer)
-          setImports(temp.imports)
+          setImports(imports+temp.imports)
           setCode(temp.code)
           console.log(imports)
           console.log(code)
@@ -86,7 +90,7 @@ function createCode(data){
         else if(layer.type==='svm')
         {
           var temp=SVM(layer)
-          setImports(temp.imports)
+          setImports(imports+temp.imports)
           setCode(temp.code)
           console.log(imports)
           console.log(code)
@@ -94,7 +98,7 @@ function createCode(data){
         else if(layer.type==='naive_bayes')
         {
           var temp=naiveBayes(layer)
-          setImports(temp.imports)
+          setImports(imports+temp.imports)
           setCode(temp.code)
           console.log(imports)
           console.log(code)
