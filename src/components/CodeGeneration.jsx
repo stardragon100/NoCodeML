@@ -42,7 +42,7 @@ function createCode(data){
         else*/ if(layer.type==='linear_regression')
         {  
           var temp=linearRegression(layer)
-          setImports(imports+temp.imports)
+          //setImports(imports+temp.imports)
           setCode(temp.code)
           console.log(imports)
           console.log(code)
