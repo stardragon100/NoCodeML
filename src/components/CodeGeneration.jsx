@@ -13,7 +13,6 @@ import inputs from './codeGeneration/CGInput'
 import preprocess from './codeGeneration/CGPreprocess'
 import outPut from './codeGeneration/CGOutput'
 
-
 const CodeGeneration = ({data,selectedOption}) => {
   
   const [completed,setCompleted]=useState(false)
@@ -34,11 +33,15 @@ function createCode(data){
           var temp=inputs(layer,selectedOption)
           console.log(temp)
           setImports(temp.imports)
+          setCode(temp.code)
         }
         
         else if(layer.type==='preprocess')
         {
-          preprocess(layer)
+          var temp=preprocess(layer)
+          console.log(temp)
+          setImports(temp)
+          setCode(temp)
         }
         else if(layer.type==='linear_regression')
         {  
@@ -51,7 +54,7 @@ function createCode(data){
         else if(layer.type==='logistic_regression')
         {
           var temp=logisticRegression(layer)
-          setImports(imports+temp.imports)
+          //setImports(imports+temp.imports)
           setCode(temp.code)
           console.log(imports)
           console.log(code)

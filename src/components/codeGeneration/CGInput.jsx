@@ -1,6 +1,5 @@
 function inputs(layer,selectedOption)
 {
-    console.log(layer,selectedOption)
     if(selectedOption==='option1')
     {
         return {imports:['import pandas as pd\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\n'],code:["data=pd.read_csv("+layer.filename+")\nX=iloc("+layer.iloc+")\nX_train, X_test, Y_train, Y_test = train_test_split( X, Y, test_size = "+layer.testsize+", random_state = "+layer.randomstate+") \n"]}
