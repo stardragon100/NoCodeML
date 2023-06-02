@@ -1,14 +1,14 @@
 const CodeSection=({imports,code}) =>{
-       console.log(imports[0])
+       console.log(imports)
    return(
     
     <div className='flex flex-col border-2 background-color1 gap-1'>
         <div className='flex flex-col p-2 rounded-lg gap-1 interior'>
-        <p className='flex flex-col self-start '>
-                {imports[0].split('\n').map(str => <p className='self-start'>{str}</p>)}                
-         </p>
-         <p className='self-start'>
-                {code}
+        <div className='flex flex-col self-start '>
+              {imports.split('\n').map(str => <p className='self-start'>{str}</p>)}                
+         </div>
+         <p className='flex flex-col self-start '>
+              {code.split('\n').map(str => <p className='self-start'>{str}</p>)}
          </p>
          </div>
     </div>

@@ -11,12 +11,12 @@ import Naive_bayes from './Naive_bayes.jsx'
 import Preprocess from './Preprocess.jsx'
 import Input from './Input.jsx'
 import CodeGeneration from './CodeGeneration.jsx'
-//import Output from './Output.jsx'
+import Output from './Output.jsx'
 //import Output1 from './Output1.jsx'
 import './style.css' 
 
 const NewComp = () => {
-  const [layers,setLayers]=useState([{key:crypto.randomUUID(),type:'input',filename:'read.csv',iloc:'0',inbuilt:'iris_plant',testsize:'30',randomstate:'none'},{key:crypto.randomUUID(),type:'preprocess',scaler:'StandardScaler'}])
+  const [layers,setLayers]=useState([{key:crypto.randomUUID(),type:'input',filename:'read.csv',iloc:'0',inbuilt:'iris_plant',testsize:'30',inputrandomstate:'None'},{key:crypto.randomUUID(),type:'preprocess',scaler:'StandardScaler'}])
   const [output,setOutput]=useState(true)
   console.log(layers)  
   const [selectedOption, setSelectedOption] = useState('option1');
@@ -340,7 +340,7 @@ const NewComp = () => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
         if(random_state==="")
-             random_state='none'
+             random_state='None'
           return {...layer,random_state}
         }
       return layer
@@ -499,7 +499,7 @@ const NewComp = () => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
         if(inputrandomstate==="")
-             inputrandomstate='none'
+             inputrandomstate='None'
           return {...layer,inputrandomstate}
         }
       return layer
@@ -584,7 +584,7 @@ const NewComp = () => {
               if(layer.type==='output')
                 {
                  // return <Output1 setKey={layer.key}/>
-                 // return <Output setKey={layer.key} changeOutputFileName={changeOutputFileName}/>
+                  return <Output setKey={layer.key} changeOutputFileName={changeOutputFileName}/>
                 }
             })}
           </ul>
