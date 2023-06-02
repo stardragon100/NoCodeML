@@ -20,9 +20,9 @@ const RandomForest = ({setKey,changeRandomChoice,changeRandomEstimators,changeRa
 
           <p className='self-start'>Criterion</p>
             <select name="criterion" id="criterion" className='border-1 h-10' onChange={e=>changeRandomCriterion(setKey,e.target.value)}>
-                <option value="gini">gini</option>
-                <option value="entropy">entropy</option>
-                <option value="logloss">log loss</option>
+                <option value="'gini'">gini</option>
+                <option value="'entropy'">entropy</option>
+                <option value="'logloss'">log loss</option>
             </select>
 
           <p className='self-start'>Minimum samples split</p>

@@ -27,3 +27,16 @@
     color: #1F1F1F;
     border-radius: 0.5rem;
 }
+.form{
+    position:fixed;
+    top : 50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background-color: #1F1F1F;
+    /* border: 2px solid #2B59FF; */
+    box-shadow: 5px 5px 50px 5px rgba(43, 89, 255, 0.4);
+    border-radius: 0.5rem;
+    width:20rem;
+    display:flex;
+    flex-direction: column;
+}

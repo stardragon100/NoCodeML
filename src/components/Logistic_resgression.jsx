@@ -13,13 +13,13 @@ const Logistic_resgression = ({setKey,changeLogisticPenalty,changeLogisticClassW
         <div className='flex flex-col w-80 place-self-center p-2 rounded-lg gap-1 interior'>
             <p className='self-start'>Penalty</p>
             <select name="penalty" id="penalty" className='border-1 h-10' onChange={e=>changeLogisticPenalty(setKey,e.target.value)}>
-                <option value="L2">L2</option>
-                <option value="none">none</option>
+                <option value="'L2'">L2</option>
+                <option value="'none'">None</option>
             </select>
             <p className='self-start'>Class Weight</p>
             <select name="class weight" id="class weight" className='border-1 h-10' onChange={e=>changeLogisticClassWeight(setKey,e.target.value)}>
-                <option value="L2">balanced</option>
-                <option value="none">none</option>
+                <option value="'L2'">balanced</option>
+                <option value="'none'">none</option>
             </select>
             <p className='self-start'>Random State</p>
             <input type='number' className='rounded-lg' onChange={e=>changeLogisticRandomState(setKey,e.target.value)}></input>

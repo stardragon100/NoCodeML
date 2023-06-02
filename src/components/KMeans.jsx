@@ -14,8 +14,8 @@ const KMeans = ({setKey,changeKMeansClusterNo,changeKMeansInit,changeKMeansInitN
 
         <p className='self-start'>Initial cluster centroid</p>
           <select name="init" id="init" className='border-1 rounded-lg h-10' onChange={e=>changeKMeansInit(setKey,e.target.value)}>
-              <option value="k-means++">k-means++</option>
-              <option value="random">Random</option>
+              <option value="'k-means++'">k-means++</option>
+              <option value="'random'">Random</option>
           </select>
 
         <p className='self-start'>Times run on cluster centroids</p>
