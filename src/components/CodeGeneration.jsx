@@ -27,87 +27,100 @@ const CodeGeneration = ({data,selectedOption}) => {
   }
   
 function createCode(data){
+  var temp1=''
+  var temp2=''
   data.map(layer=>
     { 
         if(layer.type==='input')
         {
           var temp=inputs(layer,selectedOption)
           console.log(temp)
-          setImports(temp.imports)
+          temp1=temp1+temp.imports
+          temp2=temp2+temp.code
+          setImports(temp1)
+          setCode(temp2)
         }
         
         else if(layer.type==='preprocess')
         {
-          preprocess(layer)
+          var temp=preprocess(layer)
+          temp1=temp1+temp.imports
+          temp2=temp2+temp.code
+          setImports(temp1)
+          setCode(temp2)
         }
         else if(layer.type==='linear_regression')
         {  
           var temp=linearRegression(layer)
-          //setImports(imports+temp.imports)
-          setCode(temp.code)
-          console.log(imports)
-          console.log(code)
+          temp1=temp1+temp.imports
+          temp2=temp2+temp.code
+          setImports(temp1)
+          setCode(temp2)
         }
         else if(layer.type==='logistic_regression')
         {
           var temp=logisticRegression(layer)
-          setImports(imports+temp.imports)
-          setCode(temp.code)
-          console.log(imports)
-          console.log(code)
+          temp1=temp1+temp.imports
+          temp2=temp2+temp.code
+          setImports(temp1)
+          setCode(temp2)
         }
         else if(layer.type==='knn')
         {
           var temp=kNN(layer)
-          setImports(imports+temp.imports)
-          setCode(temp.code)
-          console.log(imports)
-          console.log(code)
+          temp1=temp1+temp.imports
+          temp2=temp2+temp.code
+          setImports(temp1)
+          setCode(temp2)
         }
         else if(layer.type==='kmeans')
         {
           var temp=kMeans(layer)
-          setImports(imports+temp.imports)
-          setCode(temp.code)
-          console.log(imports)
-          console.log(code)
+          temp1=temp1+temp.imports
+          temp2=temp2+temp.code
+          setImports(temp1)
+          setCode(temp2)
         }
         else if(layer.type==='randomforest')
         {
           var temp=randomForest(layer)
-          setImports(imports+temp.imports)
-          setCode(temp.code)
-          console.log(imports)
-          console.log(code)
+          temp1=temp1+temp.imports
+          temp2=temp2+temp.code
+          setImports(temp1)
+          setCode(temp2)
         }
         else if(layer.type==='decision_tree')
         {
           var temp=decisionTree(layer)
-          setImports(imports+temp.imports)
-          setCode(temp.code)
-          console.log(imports)
-          console.log(code)
+          temp1=temp1+temp.imports
+          temp2=temp2+temp.code
+          setImports(temp1)
+          setCode(temp2)
         }
         else if(layer.type==='svm')
         {
           var temp=SVM(layer)
-          setImports(imports+temp.imports)
-          setCode(temp.code)
-          console.log(imports)
-          console.log(code)
+          temp1=temp1+temp.imports
+          temp2=temp2+temp.code
+          setImports(temp1)
+          setCode(temp2)
         }
         else if(layer.type==='naive_bayes')
         {
           var temp=naiveBayes(layer)
-          setImports(imports+temp.imports)
-          setCode(temp.code)
-          console.log(imports)
-          console.log(code)
+          temp1=temp1+temp.imports
+          temp2=temp2+temp.code
+          setImports(temp1)
+          setCode(temp2)
         }
         
         else if(layer.type==='output')
           {
-            outPut(layer)
+            var temp=outPut(layer)
+            temp1=temp1+temp.imports
+            temp2=temp2+temp.code
+            setImports(temp1)
+            setCode(temp2)
           }
         handleCompleted()
         })
