@@ -13,8 +13,8 @@ const Decision_Tree = ({setKey,changeDecisionSplitter,changeDecisionMinSamplesSp
             <p className='self-start'>Splitter</p>
             
             <select name="splitter" id="splitter" className='border-1 h-10' onChange={e=>changeSplitter(setKey,e.target.value)}>
-                <option value="best">best</option>
-                <option value="random">random</option>
+                <option value="'best'">best</option>
+                <option value="'random'">random</option>
             </select>
             <p className='self-start'>Min Samples Split</p>
             <input type='number' className='rounded-lg' onChange={e=>changeDecisionMinSamplesSplit(setKey,e.target.value)}></input>

@@ -14,18 +14,18 @@ const Svm = ({setKey,changeSvmC,changeSvmKernel,changeSvmDegree,changeSvmGamma,c
             <input type='float' className='rounded-lg' onChange={e=>changeSvmC(setKey,e.target.value)}></input>
             <p className='self-start'>Kernel</p>
             <select name="kernel" id="kernel" className='border-1 h-10' onChange={e=>changeSvmKernel(setKey,e.target.value)}>
-                <option value="rbf">rbf</option>
-                <option value="Linear">linear</option>
-                <option value="poly">poly</option>
-                <option value="sigmoid">sigmoid</option>
-                <option value="precomputed">precomputed</option>
+                <option value="'rbf'">rbf</option>
+                <option value="'Linear'">linear</option>
+                <option value="'poly'">poly</option>
+                <option value="'sigmoid'">sigmoid</option>
+                <option value="'precomputed'">precomputed</option>
             </select>
             <p className='self-start'>Degree</p>
             <input type='number' className='rounded-lg' onChange={e=>changeSvmDegree(setKey,e.target.value)}></input>
             <p className='self-start'>Gamma</p>
             <select name="gamma" id="gamma" className='border-1 h-10' onChange={e=>changeSvmGamma(setKey,e.target.value)}>
-                <option value="scale">scale</option>
-                <option value="auto">auto</option>
+                <option value="'scale'">scale</option>
+                <option value="'auto'">auto</option>
             </select>
             <p className='self-start'>Random State</p>
             <input type='number' className='rounded-lg' onChange={e=>changeSvmRandomState(setKey,e.target.value)}></input>

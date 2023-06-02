@@ -35,37 +35,37 @@ const NewComp = () => {
   }
   function addLogisticRegression()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'logistic_regression',class_weight:'Balanced',penalty:'l2',random_state:'none',max_iter:'default'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'logistic_regression',class_weight:"'Balanced'",penalty:"'l2'",random_state:'none',max_iter:'default'}]})
     setOutput(false)
     addOutput()
   }
   function addKNN()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'knn',choice:'Classifier',number_neighbours:'5',algorithm:'auto',weights:'uniform'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'knn',choice:'Classifier',number_neighbours:'5',algorithm:"'auto'",weights:"'uniform'"}]})
     setOutput(false)
     addOutput()
   }
   function addKMeans()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'kmeans',n_clusters:'8',init:'k-means++',n_init:'10',max_iter:'300',random_state:'0'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'kmeans',n_clusters:'8',init:"'k-means++'",n_init:'10',max_iter:'300',random_state:'0'}]})
     setOutput(false)
     addOutput()
   }
   function addRandomForest()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'randomforest',choice:'Classifier',n_estimators:'100',criterion:'gini',min_sample_split:'2',max_features:'10'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'randomforest',choice:'Classifier',n_estimators:'100',criterion:"'gini'",min_sample_split:'2',max_features:'10'}]})
     setOutput(false)
     addOutput()
   }
   function addDecisionTree()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'decision_tree',splitter:'best',min_samples_split:'2',random_state:'none'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'decision_tree',splitter:"'best'",min_samples_split:'2',random_state:'None'}]})
     setOutput(false)
     addOutput()
   }
   function addSvm()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'svm',c:'1.0',kernel:'rbf',degree:'3',gamma:'scale',random_state:'none'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:"'svm'",c:'1.0',kernel:"'rbf'",degree:'3',gamma:"'scale'",random_state:'None'}]})
     setOutput(false)
     addOutput()
   }
@@ -107,7 +107,7 @@ const NewComp = () => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
         if(random_state==="")
-             random_state='none'
+             random_state='None'
           return {...layer,random_state}
         }
       return layer
@@ -168,7 +168,7 @@ const NewComp = () => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
         if(random_state==="")
-             random_state='none'
+             random_state='None'
           return {...layer,random_state}
         }
       return layer
@@ -221,7 +221,7 @@ const NewComp = () => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
         if(random_state==="")
-             random_state='none'
+             random_state='None'
           return {...layer,random_state}
         }
       return layer
@@ -235,7 +235,7 @@ const NewComp = () => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
         if(max_iter==="")
-             max_iter='none'
+             max_iter='None'
           return {...layer,max_iter}
         }
       return layer

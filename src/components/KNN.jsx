@@ -20,16 +20,16 @@ const KNN = ({setKey,changeKNNAlgorithm,changeKNNChoice,changeKNNNumber,changeKN
 
         <p className='self-start'>Algorithm</p>
           <select name="algorithm" id="algorithm" className='border-1 rounded-lg h-10' onChange={e=>changeKNNAlgorithm(setKey,e.target.value)}>
-              <option value="auto">auto</option>
-              <option value="ball_tree">ball_tree</option>
-              <option value="kd_tree">kd_tree</option>
-              <option value="brute">brute</option>
+              <option value="'auto'">auto</option>
+              <option value="'ball_tree'">ball_tree</option>
+              <option value="'kd_tree'">kd_tree</option>
+              <option value="'brute'">brute</option>
           </select>
 
         <p className='self-start'>Weights</p>
           <select name="weights" id="weights" className='border-1 rounded-lg h-10' onChange={e=>changeKNNWeights(setKey,e.target.value)}>
-              <option value="uniform">uniform</option>
-              <option value="distance">distance</option>
+              <option value="'uniform'">uniform</option>
+              <option value="'distance'">distance</option>
           </select>
       </div>
     </div>
