@@ -1,13 +1,14 @@
 import React from 'react'
-const Svm = ({setKey,changeSvmC,changeSvmKernel,changeSvmDegree,changeSvmGamma,changeSvmRandomState}) => {
+const Svm = ({setKey,removeLayer,changeSvmC,changeSvmKernel,changeSvmDegree,changeSvmGamma,changeSvmRandomState}) => {
     //function changeKernel(key,value)
        // {
        //     changeSvmKernel(key,value)
        // }
   return (
     <div className='flex flex-col w-96 border-2 background-color1 gap-1' key={setKey}>
-        <div className='background-color-blue p-2'>
+        <div className='flex flex-row justify-between background-color-blue p-2'>
         SVM
+        <button className='text-2xl' onClick={e => removeLayer(setKey)}>X</button>
         </div>
         <div className='flex flex-col w-80 place-self-center p-2 rounded-lg gap-1 interior'>
             <p className='self-start'>C</p>
