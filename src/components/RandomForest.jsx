@@ -1,6 +1,6 @@
 import React from 'react'
 
-const RandomForest = ({setKey,removeLayer,changeRandomChoice,changeRandomEstimators,changeRandomCriterion,changeRandomMinSample,changeRandomMaxFeatures}) => {
+const RandomForest = ({setKey,choice,removeLayer,changeRandomChoice,changeRandomEstimators,changeRandomCriterion,changeRandomMinSample,changeRandomMaxFeatures}) => {
 
 
   return (
@@ -20,11 +20,19 @@ const RandomForest = ({setKey,removeLayer,changeRandomChoice,changeRandomEstimat
           <input type='number' className='rounded-lg' onChange={e=>changeRandomEstimators(setKey,e.target.value)}></input>
 
           <p className='self-start'>Criterion</p>
-            <select name="criterion" id="criterion" className='border-1 h-10' onChange={e=>changeRandomCriterion(setKey,e.target.value)}>
+          {
+            (choice==='classifier')?
+            (<select name="criterion" id="criterion" className='border-1 h-10' onChange={e=>changeRandomCriterion(setKey,e.target.value)}>
                 <option value="'gini'">gini</option>
                 <option value="'entropy'">entropy</option>
-                <option value="'logloss'">log loss</option>
-            </select>
+                <option value="'log_loss'">log loss</option>
+            </select>):(<select name="criterion" id="criterion" className='border-1 h-10' onChange={e=>changeRandomCriterion(setKey,e.target.value)}>
+                <option value="'squared_error'">squared error</option>
+                <option value="'absolute_error'">absolute error</option>
+                <option value="'poisson'">poisson</option>
+                <option value="'friedman_mse'">Friedman MSE</option>
+            </select>)
+            }
 
           <p className='self-start'>Minimum samples split</p>
           <input type='number' className='rounded-lg' onChange={e=>changeRandomMinSample(setKey,e.target.value)}></input>

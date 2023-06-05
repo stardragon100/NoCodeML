@@ -44,7 +44,7 @@ changeEmail = (e)=> {
                 this.setState({
                     access: true
                 }); 
-                window.open("/main_area");
+                window.open("/main_area",'_self');
             
             }
             else

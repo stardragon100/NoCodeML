@@ -32,7 +32,7 @@ const NewComp = () => {
   }
   function addOutput()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'output',fileName:'output.pkl'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'output',fileName:'output'}]})
   }
   function addLinearRegression()
   {
@@ -42,7 +42,7 @@ const NewComp = () => {
   }
   function addLogisticRegression()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'logistic_regression',class_weight:"'Balanced'",penalty:"'l2'",random_state:'none',max_iter:'default'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'logistic_regression',class_weight:"'balanced'",penalty:"'l2'",random_state:'None',max_iter:'100'}]})
     setOutput(false)
     addOutput()
   }
@@ -66,7 +66,7 @@ const NewComp = () => {
   }
   function addRandomForest()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'randomforest',choice:'Classifier',n_estimators:'100',criterion:"'gini'",min_sample_split:'2',max_features:'10'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'randomforest',choice:'classifier',n_estimators:'100',criterion:"'gini'",min_sample_split:'2',max_features:'10'}]})
     setOutput(false)
     addOutput()
   }
@@ -248,7 +248,7 @@ const NewComp = () => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
         if(max_iter==="")
-             max_iter='None'
+             max_iter='100'
           return {...layer,max_iter}
         }
       return layer
@@ -377,7 +377,30 @@ const NewComp = () => {
 
   function changeRandomChoice(key,choice)
   {
-
+    if(choice==='classifier')
+    {
+      let criterion="'gini'"
+      setLayers(currentLayers => {
+        return currentLayers.map(layer=>{
+        if(layer.key===key){
+            return {...layer,criterion}
+          }
+        return layer
+      })
+      })
+    }
+    else
+    {
+      let criterion="'squared_error'"
+      setLayers(currentLayers => {
+        return currentLayers.map(layer=>{
+        if(layer.key===key){
+            return {...layer,criterion}
+          }
+        return layer
+      })
+      })
+    }
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
@@ -580,7 +603,7 @@ const NewComp = () => {
               }
               if(layer.type==='randomforest')
               {
-                return <RandomForest setKey={layer.key} removeLayer={removeLayer} changeRandomChoice={changeRandomChoice} changeRandomCriterion={changeRandomCriterion} changeRandomEstimators={changeRandomEstimators} changeRandomMaxFeatures={changeRandomMaxFeatures} changeRandomMinSample={changeRandomMinSample} />
+                return <RandomForest setKey={layer.key} choice={layer.choice} removeLayer={removeLayer} changeRandomChoice={changeRandomChoice} changeRandomCriterion={changeRandomCriterion} changeRandomEstimators={changeRandomEstimators} changeRandomMaxFeatures={changeRandomMaxFeatures} changeRandomMinSample={changeRandomMinSample} />
               }
               if(layer.type==='decision_tree')
               {

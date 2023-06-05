@@ -16,10 +16,9 @@ const Svm = ({setKey,removeLayer,changeSvmC,changeSvmKernel,changeSvmDegree,chan
             <p className='self-start'>Kernel</p>
             <select name="kernel" id="kernel" className='border-1 h-10' onChange={e=>changeSvmKernel(setKey,e.target.value)}>
                 <option value="'rbf'">rbf</option>
-                <option value="'Linear'">linear</option>
+                <option value="'linear'">linear</option>
                 <option value="'poly'">poly</option>
                 <option value="'sigmoid'">sigmoid</option>
-                <option value="'precomputed'">precomputed</option>
             </select>
             <p className='self-start'>Degree</p>
             <input type='number' className='rounded-lg' onChange={e=>changeSvmDegree(setKey,e.target.value)}></input>
