@@ -6,7 +6,7 @@ function preprocess(layer)
     }
     else
     {
-        return {imports:['from sklearn.preprocessing import MinMaxScaler\n'],code:["scaler = MinMaxScaler()\nX_train=scaler.fit_transform(X_train)\nX_test=scaler.fit_transform(X_test)"]}
+        return {imports:['from sklearn.preprocessing import MinMaxScaler\n'],code:["scaler = MinMaxScaler()\nX_train=scaler.fit_transform(X_train)\nX_test=scaler.fit_transform(X_test)\n"]}
     }
 }
 export default preprocess;

@@ -1,13 +1,14 @@
 import React from 'react'
-const Svm = ({setKey,changeSvmC,changeSvmKernel,changeSvmDegree,changeSvmGamma,changeSvmRandomState}) => {
+const Svm = ({setKey,removeLayer,changeSvmC,changeSvmKernel,changeSvmDegree,changeSvmGamma,changeSvmRandomState}) => {
     //function changeKernel(key,value)
        // {
        //     changeSvmKernel(key,value)
        // }
   return (
     <div className='flex flex-col w-96 border-2 background-color1 gap-1' key={setKey}>
-        <div className='background-color-blue p-2'>
+        <div className='flex flex-row justify-between background-color-blue p-2'>
         SVM
+        <button className='text-2xl' onClick={e => removeLayer(setKey)}>X</button>
         </div>
         <div className='flex flex-col w-80 place-self-center p-2 rounded-lg gap-1 interior'>
             <p className='self-start'>C</p>
@@ -15,10 +16,9 @@ const Svm = ({setKey,changeSvmC,changeSvmKernel,changeSvmDegree,changeSvmGamma,c
             <p className='self-start'>Kernel</p>
             <select name="kernel" id="kernel" className='border-1 h-10' onChange={e=>changeSvmKernel(setKey,e.target.value)}>
                 <option value="'rbf'">rbf</option>
-                <option value="'Linear'">linear</option>
+                <option value="'linear'">linear</option>
                 <option value="'poly'">poly</option>
                 <option value="'sigmoid'">sigmoid</option>
-                <option value="'precomputed'">precomputed</option>
             </select>
             <p className='self-start'>Degree</p>
             <input type='number' className='rounded-lg' onChange={e=>changeSvmDegree(setKey,e.target.value)}></input>

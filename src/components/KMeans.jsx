@@ -1,12 +1,13 @@
 import React from 'react'
 
-const KMeans = ({setKey,changeKMeansClusterNo,changeKMeansInit,changeKMeansInitNo,changeKMeansRandom,changeKMeansMaxIter}) => {
+const KMeans = ({setKey,removeLayer,changeKMeansClusterNo,changeKMeansInit,changeKMeansInitNo,changeKMeansRandom,changeKMeansMaxIter}) => {
 
 
   return (
     <div className='flex flex-col w-96 border-2 rounded-lg background-color1 gap-1' key={setKey}>
-      <div className='background-color-blue p-2'>
+      <div className='flex flex-row justify-between background-color-blue p-2'>
       K-means
+      <button className='text-2xl' onClick={e => removeLayer(setKey)}>X</button>
       </div>
       <div className='flex flex-col w-80 place-self-center p-2 rounded-lg gap-1 interior'>
         <p className='self-start rounded-lg'>No of clusters</p>

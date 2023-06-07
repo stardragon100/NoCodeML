@@ -18,6 +18,13 @@ import './style.css'
 const NewComp = () => {
   const [layers,setLayers]=useState([{key:crypto.randomUUID(),type:'input',filename:'read.csv',iloc:'0',inbuilt:'iris_plant',testsize:'30',inputrandomstate:'None'},{key:crypto.randomUUID(),type:'preprocess',scaler:'StandardScaler'}])
   const [output,setOutput]=useState(true)
+  useEffect(() => {
+    if(layers.length===3)
+    {
+      setLayers((currentLayers)=>{return currentLayers.filter(layer => layer.type !== 'output')})
+      setOutput(true)
+    }
+  }, [layers])
   console.log(layers)  
   const [selectedOption, setSelectedOption] = useState('option1');
   function handleInputChange(event) {
@@ -25,7 +32,7 @@ const NewComp = () => {
   }
   function addOutput()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'output',fileName:'output.pkl'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'output',fileName:'output'}]})
   }
   function addLinearRegression()
   {
@@ -35,9 +42,15 @@ const NewComp = () => {
   }
   function addLogisticRegression()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'logistic_regression',class_weight:"'Balanced'",penalty:"'l2'",random_state:'none',max_iter:'default'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'logistic_regression',class_weight:"'balanced'",penalty:"'l2'",random_state:'None',max_iter:'100'}]})
     setOutput(false)
     addOutput()
+  }
+  function removeLayer(key)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.filter(layer => layer.key !== key)
+    })
   }
   function addKNN()
   {
@@ -53,7 +66,7 @@ const NewComp = () => {
   }
   function addRandomForest()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'randomforest',choice:'Classifier',n_estimators:'100',criterion:"'gini'",min_sample_split:'2',max_features:'10'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'randomforest',choice:'classifier',n_estimators:'100',criterion:"'gini'",min_sample_split:'2',max_features:'10'}]})
     setOutput(false)
     addOutput()
   }
@@ -65,7 +78,7 @@ const NewComp = () => {
   }
   function addSvm()
   {
-    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:"'svm'",c:'1.0',kernel:"'rbf'",degree:'3',gamma:"'scale'",random_state:'None'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:"svm",c:'1.0',kernel:"'rbf'",degree:'3',gamma:"'scale'",random_state:'None'}]})
     setOutput(false)
     addOutput()
   }
@@ -235,7 +248,7 @@ const NewComp = () => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
         if(max_iter==="")
-             max_iter='None'
+             max_iter='100'
           return {...layer,max_iter}
         }
       return layer
@@ -364,7 +377,30 @@ const NewComp = () => {
 
   function changeRandomChoice(key,choice)
   {
-
+    if(choice==='classifier')
+    {
+      let criterion="'gini'"
+      setLayers(currentLayers => {
+        return currentLayers.map(layer=>{
+        if(layer.key===key){
+            return {...layer,criterion}
+          }
+        return layer
+      })
+      })
+    }
+    else
+    {
+      let criterion="'squared_error'"
+      setLayers(currentLayers => {
+        return currentLayers.map(layer=>{
+        if(layer.key===key){
+            return {...layer,criterion}
+          }
+        return layer
+      })
+      })
+    }
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
@@ -551,35 +587,35 @@ const NewComp = () => {
                 }
                 if(layer.type==='linear_regression')
               {
-                return <Linear_regression setKey={layer.key} />
+                return <Linear_regression setKey={layer.key} removeLayer={removeLayer} />
               }
               if(layer.type==='logistic_regression')
               {
-                return <Logistic_resgression setKey={layer.key} changeLogisticPenalty={changeLogisticPenalty} changeLogisticClassWeight={changeLogisticClassWeight} changeLogisticRandomState={changeLogisticRandomState} changeLogisticMaxIter={changeLogisticMaxIter}/>
+                return <Logistic_resgression setKey={layer.key} removeLayer={removeLayer} changeLogisticPenalty={changeLogisticPenalty} changeLogisticClassWeight={changeLogisticClassWeight} changeLogisticRandomState={changeLogisticRandomState} changeLogisticMaxIter={changeLogisticMaxIter}/>
               }
               if(layer.type==='knn')
               {
-                return <KNN setKey={layer.key} changeKNNChoice={changeKNNChoice} changeKNNAlgorithm={changeKNNAlgorithm} changeKNNNumber={changeKNNNumber} changeKNNWeights={changeKNNWeights} />
+                return <KNN setKey={layer.key} removeLayer={removeLayer} changeKNNChoice={changeKNNChoice} changeKNNAlgorithm={changeKNNAlgorithm} changeKNNNumber={changeKNNNumber} changeKNNWeights={changeKNNWeights} />
               }
               if(layer.type==='kmeans')
               {
-                return <KMeans setKey={layer.key} changeKMeansClusterNo={changeKMeansClusterNo} changeKMeansInit={changeKMeansInit} changeKMeansInitNo={changeKMeansInitNo} changeKMeansMaxIter={changeKMeansMaxIter} changeKMeansRandom={changeKMeansRandom} />
+                return <KMeans setKey={layer.key} removeLayer={removeLayer} changeKMeansClusterNo={changeKMeansClusterNo} changeKMeansInit={changeKMeansInit} changeKMeansInitNo={changeKMeansInitNo} changeKMeansMaxIter={changeKMeansMaxIter} changeKMeansRandom={changeKMeansRandom} />
               }
               if(layer.type==='randomforest')
               {
-                return <RandomForest setKey={layer.key} changeRandomChoice={changeRandomChoice} changeRandomCriterion={changeRandomCriterion} changeRandomEstimators={changeRandomEstimators} changeRandomMaxFeatures={changeRandomMaxFeatures} changeRandomMinSample={changeRandomMinSample} />
+                return <RandomForest setKey={layer.key} choice={layer.choice} removeLayer={removeLayer} changeRandomChoice={changeRandomChoice} changeRandomCriterion={changeRandomCriterion} changeRandomEstimators={changeRandomEstimators} changeRandomMaxFeatures={changeRandomMaxFeatures} changeRandomMinSample={changeRandomMinSample} />
               }
               if(layer.type==='decision_tree')
               {
-                return <Decision_tree setKey={layer.key} changeDecisionSplitter={changeDecisionSplitter} changeDecisionMinSamplesSplit={changeDecisionMinSamplesSplit} changeDecisionRandomState={changeDecisionRandomState}/>
+                return <Decision_tree setKey={layer.key} removeLayer={removeLayer} changeDecisionSplitter={changeDecisionSplitter} changeDecisionMinSamplesSplit={changeDecisionMinSamplesSplit} changeDecisionRandomState={changeDecisionRandomState}/>
               }
               if(layer.type==='svm')
               {
-                return <Svm setKey={layer.key} changeSvmC={changeSvmC} changeSvmKernel={changeSvmKernel} changeSvmDegree={changeSvmDegree} changeSvmGamma={changeSvmGamma} changeSvmRandomState={changeSvmRandomState}/>
+                return <Svm setKey={layer.key} removeLayer={removeLayer} changeSvmC={changeSvmC} changeSvmKernel={changeSvmKernel} changeSvmDegree={changeSvmDegree} changeSvmGamma={changeSvmGamma} changeSvmRandomState={changeSvmRandomState}/>
               }
               if(layer.type==='naive_bayes')
               {
-                return <Naive_bayes setKey={layer.key} changeNaiveBayesEstimator={changeNaiveBayesEstimator} />
+                return <Naive_bayes setKey={layer.key} removeLayer={removeLayer} changeNaiveBayesEstimator={changeNaiveBayesEstimator} />
               }
               if(layer.type==='output')
                 {

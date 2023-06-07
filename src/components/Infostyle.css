@@ -1,0 +1,31 @@
+
+.infobutton{
+border: 1px;
+border-style: solid;
+margin:3px;
+padding: 5px;
+background-color:#163e80;
+color: white;
+
+}
+
+.algorithm{
+  display: flex;
+  flex-direction: column;
+  border: 1px;
+  border-style: solid;
+  padding: 5px;
+  margin: 5px;
+  background-color:aliceblue;
+  align-items: center;
+}
+.info-content{
+  display: flex;
+  flex-direction: column;
+}
+.name{
+font-size: large;
+font-weight: bold;
+color: #163e80;
+margin: 3px;
+}
