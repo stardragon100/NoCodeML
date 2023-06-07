@@ -25,8 +25,12 @@ const Info = () => {
       </div>
       <div className='algorithm'>
     <h1 className='name'>Random Forest</h1>
+    <h2 className='name1'>Classifier</h2>
         <a href="https://www.analyticsvidhya.com/blog/2021/06/understanding-random-forest/"><button className='infobutton'>Algorithm</button></a>
         <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html"><button className='infobutton'>Parameters</button></a>
+    <h2 className='name1'>Regressor</h2>
+        <a href="https://towardsdatascience.com/random-forest-regression-5f605132d19d"><button className='infobutton'>Algorithm</button></a>
+        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html"><button className='infobutton'>Parameters</button></a> 
       </div>
       <div className='algorithm'>
     <h1 className='name'>KMeans</h1>
@@ -36,12 +40,14 @@ const Info = () => {
       <div className='algorithm'>
     <h1 className='name'>KNN</h1>
         <a href="https://www.analyticsvidhya.com/blog/2018/03/introduction-k-neighbours-algorithm-clustering/"><button className='infobutton'>Algorithm</button></a>
+        <h2 className='name1'>Classifier</h2>
         <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html"><button className='infobutton'>Parameters</button></a>
+        <h2 className='name1'>Regressor</h2>
+        <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html"><button className='infobutton'>Parameters</button></a>
       </div>
       <div className='algorithm'>
     <h1 className='name'>Naive Bayes</h1>
         <a href="https://www.analyticsvidhya.com/blog/2017/09/naive-bayes-explained/"><button className='infobutton'>Algorithm</button></a>
-        {/* <a href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html"><button className='infobutton'>Parameters</button></a> */}
       </div>
     </div>
   )
