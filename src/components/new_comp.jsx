@@ -488,15 +488,15 @@ const NewComp = () => {
     })
     })
   }
-  function changeInputFileName(key,file_name)
+  function changeInputFileName(key,filename)
   {
 
     setLayers(currentLayers => {
       return currentLayers.map(layer=>{
       if(layer.key===key){
-        if(file_name==="")
-             file_name='read.csv'
-          return {...layer,file_name}
+        if(filename==="")
+             filename='read.csv'
+          return {...layer,filename}
         }
       return layer
     })

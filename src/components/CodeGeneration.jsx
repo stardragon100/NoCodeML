@@ -13,7 +13,6 @@ import inputs from './codeGeneration/CGInput'
 import preprocess from './codeGeneration/CGPreprocess'
 import outPut from './codeGeneration/CGOutput'
 
-
 const CodeGeneration = ({data,selectedOption}) => {
   
   const [completed,setCompleted]=useState(false)
