@@ -50,6 +50,7 @@ changeEmail = (e)=> {
             else
             {
                 console.log("invalid credentials")
+                window.alert("Invalid Credentials !!")
                 this.setState({
                     access: false
                 });
