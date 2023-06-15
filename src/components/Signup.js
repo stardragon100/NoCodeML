@@ -77,9 +77,9 @@ setMessage =(e)=>{
 render(){
     return(
         <div>
-             <Link to="/" className='background-color-red p-1 rounded-lg'>Back</Link> 
-          
-              <div class="form">
+        <div>
+          <div class="form">
+              <div class="card">
              <h2>Sign-up</h2>
                  <div class="input">
                      <div class="inputBox">
@@ -105,6 +105,8 @@ render(){
                 <p class="forget">Already have an account? </p>
                 <Link to="/login" className='background-color-red p-2 rounded-lg text-sm text-center'>Login</Link>
                 
+            </div>
+            </div>
             </div>
             </div> 
         </div>  

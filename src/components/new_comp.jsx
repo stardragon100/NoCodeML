@@ -558,10 +558,10 @@ const NewComp = () => {
   }
   return (
     <div className='flex flex-col'>
-      <div className='m-12 flex flex-row-reverse place-content-start gap-2'>
+      <div className='m-12 flex flex-row-reverse place-content-start gap-4'>
         {
           output?
-            (<div className='w-96 py-2 border-dashed border-2 gap-1 text-4xl rounded-lg background-color1'>
+            (<div className='card1 w-96 py-2 border-dashed  gap-1 text-4xl rounded-lg background-color1'>
               <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addLinearRegression()}>Linear Regression</button>
               <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addLogisticRegression()}>Logistic Regression</button>
               <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addKNN()}>KNN</button>

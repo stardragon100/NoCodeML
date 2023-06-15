@@ -8,8 +8,7 @@
 }
 .background-color1{
     background-color: #1F1F1F;
-    border: 2px solid #2B59FF;
-    box-shadow: 5px 5px 50px 5px rgba(43, 89, 255, 0.4);
+    margin: 10px;
     border-radius: 0.5rem;
 }
 .interior{
@@ -40,3 +39,201 @@
     display:flex;
     flex-direction: column;
 }
+.code_area{
+  background-color: #EFEFEF;
+  margin: 64px;
+}
+.code_area p{
+  color:#e81cff;
+}
+.card {
+    position: relative;
+    background-color: #EFEFEF;
+    gap: 12px;
+    padding: 40px 40px 60px;
+    border-radius: 8px;
+  }
+  
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    left: -5px;
+    margin: auto;
+    border-radius: 10px;
+    background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100% );
+    z-index: -10;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .card::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+    transform: translate3d(0, 0, 0) scale(0.95);
+    filter: blur(20px);
+  }
+  
+  .heading {
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 700;
+  }
+  
+  .card p:not(.heading) {
+    font-size: 14px;
+  }
+  
+  .card p:last-child {
+    color: #e81cff;
+    font-weight: 600;
+  }
+  
+  .card:hover::after {
+    filter: blur(50px);
+  }
+  
+  .card:hover::before {
+    transform: rotate(180deg);
+  }
+  .card2 {
+    position: relative;
+    display: flex;
+    background-color: #EFEFEF;
+    place-content: start;
+    place-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 20px;
+    border-radius: 20px;
+  }
+  .card2::before {
+    content: '';
+    position: absolute;
+    width: 130%;
+    background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(255, 48, 255));
+    height: 50%;
+    animation: rotBGimg 3s linear infinite;
+    transition: all 0.2s linear;
+  }
+  .card2 *{
+    z-index: 1;
+  }
+  .card2::after {
+    content: '';
+    position: absolute;
+    background: #EFEFEF;
+    inset: 5px;
+    border-radius: 15px;
+  } 
+  .card1 {
+    position: relative;
+    display: flex;
+    place-content: start;
+    place-items: center;
+    background: #EFEFEF;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+  .card1 .heading{
+    display: flex;
+    place-content: center;
+    place-items: center;
+    font-size: 28px;
+    color:#FFFFFF;
+    text-transform: capitalize;
+    font-weight: 700;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+  }
+  .card1 .heading1 .delete{
+    background: transparent;
+    box-shadow:0px;
+    font-size: 28px;
+    margin: 4px;
+  }
+  .card1 .heading1{
+    display: flex;
+    place-content: center;
+    place-items: center;
+    padding: 0,10px;
+    justify-content: space-between;
+    font-size: 28px;
+    color:#FFFFFF;
+    text-transform: capitalize;
+    font-weight: 700;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+  }
+  .center{
+    display: flex;
+    place-content: center;
+    place-items: center;
+  }
+  .card1::before {
+    content: '';
+    position: absolute;
+    width: 150px;
+    background-image: linear-gradient(180deg, rgb(0, 183, 255), rgb(255, 48, 255));
+    height: 130%;
+    animation: rotBGimg 3s linear infinite;
+    transition: all 0.2s linear;
+  }
+  .card1 p,label{
+    color:#fc00ff;
+  }
+  @keyframes rotBGimg {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .card1::after {
+    content: '';
+    position: absolute;
+    background: #EFEFEF;
+    inset: 5px;
+    border-radius: 15px;
+  } 
+  
+  .card1 *{
+    z-index: 1;
+  }
+  
+  .card1 button{
+    margin-top: 10px;
+    cursor: pointer;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+    box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.1),
+      2px 2px 6px rgba(0, 0, 0, 0.8);
+  }
+  button{
+    margin-top: 10px;
+    cursor: pointer;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+    box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.1),
+      2px 2px 6px rgba(0, 0, 0, 0.8);
+  }
+  button:hover{
+    background: linear-gradient(45deg, #fc00ff 0%, #00dbde 100% );
+  }
+  .card1 button:hover{
+    background: linear-gradient(45deg, #fc00ff 0%, #00dbde 100% );
+  }
+  
+  .card1 p:not(.heading) {
+    font-size: 14px;
+  }
+  
+  .card1 p:last-child {
+    color: #e81cff;
+    font-weight: 600;
+  }
+  
+  

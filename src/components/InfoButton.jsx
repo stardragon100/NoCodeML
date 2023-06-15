@@ -3,7 +3,7 @@ import './styleInfo.css'
 const InfoButton = () => {
    
     return (
-    <div>
+    <div className='inplace'>
 <link href="https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet"></link>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"></link>
     <div className="col-md-3">

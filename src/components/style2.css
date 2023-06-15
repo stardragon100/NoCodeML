@@ -4,29 +4,29 @@
     box-sizing: border-box;
     font-family: poppins;
   }
-  body {
+  /* body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     background: #131419;
-  }
+  } */
   .form {
     /* position: relative; */
     position:fixed;
     top : 50%;
     left:50%;
+    opacity: 0.95;
     transform:translate(-50%,-50%);
     width: 350px;
-    padding: 40px 40px 60px;
     border-radius: 10px;
-    background: #131419;
+    background: #EFEFEF;
     text-align: center;
     box-shadow: -5px -5px 10px rgba(245, 245, 245, 0.05),
-      5px 5px 15px rgba(212, 74, 74, 0.5);
+      5px 5px 15px rgba(252,0,255, 0.5);
   }
   .form h2 {
-    color: #ffffff;
+    color: #00DBDE;
+    font-size: 30px;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 4px;
@@ -38,13 +38,14 @@
   .input {
     margin-top: 40px;
     text-align: left;
+    color: #FC00FF;
   }
   .form .input .inputBox {
     margin-top: 20px;
   }
   .form .input .inputBox label {
     display: block;
-    color: #e24444;
+    color: #FC00FF;
     margin-bottom: 5px;
     font-size: 18px;
   }
@@ -52,7 +53,7 @@
     width: 100%;
     height: 50px;
     color: #ffffff;
-    background: #131419;
+    background:#ADADAD;
     border: none;
     outline: none;
     border-radius: 40px;
@@ -63,9 +64,15 @@
   }
   .form .input .inputBox input[type="submit"] {
     margin-top: 20px;
+    cursor: pointer;
+    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
     box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.1),
       2px 2px 6px rgba(0, 0, 0, 0.8);
   }
+  .form .input .inputBox input[type="submit"]:hover {
+    background: linear-gradient(45deg, #fc00ff 0%, #00dbde 100% );
+  }
+
   .form .input .inputBox input[type="submit"]:active {
     color: #707a7e;
     margin-top: 20px;

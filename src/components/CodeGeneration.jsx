@@ -133,7 +133,7 @@ function createCode(data){
    </div>
     ):
     (
-    <div>
+    <div className='center'>
       <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>createCode(data)}>Generate Code</button>
     </div>
     )

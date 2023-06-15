@@ -83,23 +83,27 @@ render(){
             // </form>
             // </div>  
             //////
-            <div class="form">
-             <h2>Login</h2>
-                 <div class="input">
-                     <div class="inputBox">
-                     <label>Email</label>
-                     <input type="text" placeholder="Email" onChange={this.changeEmail}/>
-                     </div>
-                 <div class="inputBox">
-                      <label>Password</label>
-                      <input type="password" placeholder="· · · · · ·" onChange={this.changePassword}/>
-                 </div>
-                 <div class="inputBox">
-                      <input type="submit" value="Sign in" onClick={(e)=>{this.submitForm(e)}}/>
-                 </div>
-            </div>
-             <p class="forget">Don't have an account? </p>
-             <Link to="/signup" className='input'>Sign Up</Link>
+            <div >
+                <div class='form'>
+                <div class="card">
+                <h2>Login</h2>
+                    <div class="input">
+                        <div class="inputBox">
+                        <label>Email</label>
+                        <input type="text" placeholder="Email" onChange={this.changeEmail}/>
+                        </div>
+                    <div class="inputBox">
+                        <label>Password</label>
+                        <input type="password" placeholder="· · · · · ·" onChange={this.changePassword}/>
+                    </div>
+                    <div class="inputBox">
+                        <input type="submit" value="Sign in" onClick={(e)=>{this.submitForm(e)}}/>
+                    </div>
+                </div>
+                <p class="forget">Don't have an account? </p>
+                <Link to="/signup" className='input'>Sign Up</Link>
+                </div>
+                </div>
             </div>
     );
 }

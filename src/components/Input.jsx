@@ -3,8 +3,8 @@ import RadioButtonGroup from './radiobutton';
 const Input = ({setKey,selectedOption,handleInputChange,changeInputFileName,changeInputFileInteger,changeInputInbuilt,changeInputTestSize,changeInputRandomState}) => {
   
   return (
-    <div className='flex flex-col w-96 border-2 rounded-lg background-color1 gap-1' key={setKey}>
-      <div className='background-color-blue p-2'>
+    <div className='card1 flex flex-col w-96 border-2 rounded-lg background-color1 gap-1' key={setKey}>
+      <div className='heading w-96 p-2'>
       INPUT
       </div>
       
@@ -14,10 +14,10 @@ const Input = ({setKey,selectedOption,handleInputChange,changeInputFileName,chan
     {(selectedOption==='option1')?
     (
       <div>
-        <p className='self-start rounded-lg'>Upload File</p>
-        <input type='text' className='rounded-lg' onChange={e=>changeInputFileName(setKey,e.target.value)}></input>
-        <p className='self-start rounded-lg'>Integer location</p>
-        <input type='number' className='rounded-lg' onChange={e=>changeInputFileInteger(setKey,e.target.value)}></input>
+        <p className='self-start rounded-lg h-10'>Upload File</p>
+        <input type='text' className='rounded-lg w-72' onChange={e=>changeInputFileName(setKey,e.target.value)}></input>
+        <p className='self-start rounded-lg h-10'>Integer location</p>
+        <input type='number' className='rounded-lg w-72' onChange={e=>changeInputFileInteger(setKey,e.target.value)}></input>
       </div>
     )
     :
