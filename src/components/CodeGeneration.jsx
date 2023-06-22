@@ -12,6 +12,7 @@ import CodeSection from './CodeSection'
 import inputs from './codeGeneration/CGInput'
 import preprocess from './codeGeneration/CGPreprocess'
 import outPut from './codeGeneration/CGOutput'
+import axios from 'axios'
 
 const CodeGeneration = ({data,selectedOption}) => {
   
@@ -122,6 +123,16 @@ function createCode(data){
             setCode(temp2)
           }
         handleCompleted()
+        var temp3=temp1+'\n'+temp2 ;
+        //e.preventDefault();
+        console.log("hello")
+        axios.defaults.withCredentials = true //since no ssl..
+        const response= axios.post('http://localhost:8080/codegeneration', {
+            data : {
+                code:temp3,
+                //password:this.state.password,
+            }})
+            console.log("sent?");
         })
 }
   return (
