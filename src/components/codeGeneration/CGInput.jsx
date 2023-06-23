@@ -2,7 +2,7 @@ function inputs(layer,selectedOption)
 {
     if(selectedOption==='option1')
     {
-        return {imports:['import pandas as pd\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\n'],code:["data=pd.read_csv('"+layer.filename+"')\nX=iloc("+layer.iloc+")\nX_train, X_test, Y_train, Y_test = train_test_split( X, Y, test_size = "+layer.testsize+", random_state = "+layer.inputrandomstate+") \n"]}
+        return {imports:['import pandas as pd\nimport numpy as np\nfrom sklearn.model_selection import train_test_split\n'],code:["data=pd.read_csv('"+layer.filename+"')\nX=iloc[1:data.shape[0],0:"+layer.iloc+"]\nY=iloc[1:data.shape[0],"+layer.iloc+":"+layer.iloc+"+1]\nX_train, X_test, Y_train, Y_test = train_test_split( X, Y, test_size = "+layer.testsize+", random_state = "+layer.inputrandomstate+") \n"]}
     }
     else if(selectedOption==='option2')
     {
