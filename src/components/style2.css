@@ -22,10 +22,10 @@
     background: #EFEFEF;
     text-align: center;
     box-shadow: -5px -5px 10px rgba(245, 245, 245, 0.05),
-      5px 5px 15px rgba(252,0,255, 0.5);
+      5px 5px 15px rgba(60,150,185,1) 0%;
   }
   .form h2 {
-    color: #00DBDE;
+    color: #071c3c;
     font-size: 30px;
     font-weight: 500;
     text-transform: uppercase;
@@ -38,14 +38,14 @@
   .input {
     margin-top: 40px;
     text-align: left;
-    color: #FC00FF;
+    color: #071c3c;
   }
   .form .input .inputBox {
     margin-top: 20px;
   }
   .form .input .inputBox label {
     display: block;
-    color: #FC00FF;
+    color: #071c3c;
     margin-bottom: 5px;
     font-size: 18px;
   }
@@ -65,12 +65,14 @@
   .form .input .inputBox input[type="submit"] {
     margin-top: 20px;
     cursor: pointer;
-    background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+    background: rgb(60,150,185);
+    background: linear-gradient(131deg, rgba(60,150,185,1) 0%, rgba(82,77,149,1) 38%, rgba(7,28,60,1) 100%);
     box-shadow: -2px -2px 6px rgba(255, 255, 255, 0.1),
       2px 2px 6px rgba(0, 0, 0, 0.8);
   }
   .form .input .inputBox input[type="submit"]:hover {
-    background: linear-gradient(45deg, #fc00ff 0%, #00dbde 100% );
+    background: rgb(60,150,185);
+    background: linear-gradient(131deg, rgba(60,150,185,1) 0%, rgba(82,77,149,1) 38%, rgba(7,28,60,1) 100%);
   }
 
   .form .input .inputBox input[type="submit"]:active {
