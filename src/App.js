@@ -3,7 +3,7 @@ import { BrowserRouter as Router ,Routes, Route} from 'react-router-dom'
 import Main_area from './components/main_area.jsx';
 import Login from './components/Login.js'
 import Signup from './components/Signup.js';
-import Info from './components/Info';
+import Info from './components/Info.jsx';
 import CodeGeneration from './components/CodeGeneration';
 function App() {
   return (
