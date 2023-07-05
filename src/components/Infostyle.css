@@ -26,9 +26,9 @@ color: white;
   display: flex;
   flex-direction: column;
   border: 1px;
-  border-style: solid;
+  /* border-style: solid; */
   padding: 5px;
-  margin: 5px;
+  margin: 20px;
   background-color:aliceblue;
   align-items: center;
 }

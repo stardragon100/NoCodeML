@@ -4,6 +4,7 @@ import Main_area from './components/main_area.jsx';
 import Login from './components/Login.js'
 import Signup from './components/Signup.js';
 import Info from './components/Info.jsx';
+import Admin from './components/Admin';
 import CodeGeneration from './components/CodeGeneration';
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Login/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/admin' element={<Admin/>}/>
         <Route path="/signup" element={<Signup />}/>
         <Route path='/main_area' element={<Main_area/>}/>
         <Route path='/info' element={<Info/>}/>
