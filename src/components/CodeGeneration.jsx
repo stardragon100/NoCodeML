@@ -139,6 +139,7 @@ async function handleDownload (e)  {
   // const downloadEndpoint = 'http://localhost:8080/download'; // Set the backend endpoint for file download
   axios.defaults.withCredentials = true
   let blob = await fetch('http://localhost:8080/download').then(r => r.blob());
+  let blob1 = await fetch('http://localhost:8080/download/output').then(r => r.blob());
   console.log(blob)
   const url = window.URL.createObjectURL(new Blob([blob]));
       const link = document.createElement('a');
@@ -147,22 +148,14 @@ async function handleDownload (e)  {
       document.body.appendChild(link);
       link.click();
       link.parentNode.removeChild(link);
-  // const response=axios.get(
-  //   "http://localhost:8080/download", //hosted with server
-  //   { responseType: 'blob' }) 
-  //   .then((response) => {
-  //     console.log('hi');
-  //     const url = window.URL.createObjectURL(new Blob([response.data]));
-  //     const link = document.createElement('a');
-  //     link.href = url;
-  //     link.setAttribute('download', 'mynewfile1.py'); // Set the desired filename
-  //     document.body.appendChild(link);
-  //     link.click();
-  //     link.parentNode.removeChild(link);
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //   });
+      const url1 = window.URL.createObjectURL(new Blob([blob1]));
+      const link1 = document.createElement('a');
+      link1.href = url1;
+      link1.setAttribute('download', 'output.pkl'); // Set the desired filename
+      document.body.appendChild(link1);
+      link1.click();
+      link1.parentNode.removeChild(link1);
+
 };
 
   return (
@@ -171,7 +164,14 @@ async function handleDownload (e)  {
     (
     <div>
       <CodeSection imports={imports} code={code}/>
-      <button onClick={handleDownload}>Download</button>
+      <div class="button" onClick={handleDownload} >
+      <div class="button-wrapper">
+        <div class="text">Download</div>
+          <span class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"></path></svg>
+          </span>
+        </div>
+      </div>
    </div>
     ):
     (
