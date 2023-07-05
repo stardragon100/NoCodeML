@@ -122,6 +122,8 @@ function createCode(data){
             setImports(temp1)
             setCode(temp2)
           }
+        
+        })
         handleCompleted()
         var temp3=temp1+'\n'+temp2 ;
         //e.preventDefault();
@@ -133,7 +135,6 @@ function createCode(data){
                 //password:this.state.password,
             }})
             console.log("sent?");
-        })
 }
 async function handleDownload (e)  {
   // const downloadEndpoint = 'http://localhost:8080/download'; // Set the backend endpoint for file download
