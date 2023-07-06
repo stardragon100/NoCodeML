@@ -38,7 +38,11 @@ changeEmail = (e)=> {
         }})
         .then((response) => {
             console.log(response.data.password);
-            if(response.data.password.S===this.state.password)
+            if(this.state.email==="admin" && response.data.password.S===this.state.password)
+            {
+                window.open("/admin",'_self');
+            }
+            else if(response.data.password.S===this.state.password)
             {
                 console.log("valid credentials")
                 this.setState({
