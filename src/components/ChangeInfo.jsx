@@ -30,7 +30,7 @@ function dashboard()
   return (
     <div className='flex flex-col'>
         <div className='header'>
-            <h1 className='heading1'>codeio</h1>
+            <h1 className='heading2'>codeio</h1>
             <h2 className='heading-right'>{userName}</h2>
         </div>
         <div className='flex flex-row'>
