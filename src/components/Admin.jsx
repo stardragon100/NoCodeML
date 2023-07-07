@@ -9,8 +9,9 @@ const Admin = () => {
     const [algo,setAlgo]=useState('')
    
     useEffect(()=>{
-            localStorage.setItem('algo', JSON.stringify(algo));
+            localStorage.setItem("algo", JSON.stringify(algo));
           }, [algo]);
+
     useEffect(()=>{
             //add the code to get the user name,trial count and count Generation count from the backend
             axios.defaults.withCredentials = true //since no ssl..
@@ -33,7 +34,11 @@ const Admin = () => {
     {
         setAlgo(e.target.value)
         window.open("/changeInfo",'_self');
+
     }
+
+            
+    
     function back()
     {
         window.open("/login",'_self');

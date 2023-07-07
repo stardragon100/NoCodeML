@@ -4,7 +4,6 @@ import Main_area from './components/main_area.jsx';
 import Login from './components/Login.js'
 import Signup from './components/Signup.js';
 import Info from './components/Info.jsx';
-
 import Admin from './components/Admin.jsx';
 import CodeGeneration from './components/CodeGeneration';
 import ChangeInfo from './components/ChangeInfo.jsx';
