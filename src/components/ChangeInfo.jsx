@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 const ChangeInfo = () => {
 const [algo, setAlgo] = useState();
-const [userName,setUserName]=useState('Trial User')
+const [userName,setUserName]=useState('');
 const [info,setInfo]=useState('')
 const ref = useRef(null);
 
