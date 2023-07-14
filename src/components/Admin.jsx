@@ -3,36 +3,42 @@ import './admin.css'
 import { useState} from 'react'
 import axios from 'axios'
 const Admin = () => {
-    const [userName,setUserName]=useState('Trial User')
+    const [userName,setUserName]=useState('')
     const [loginCount,setLoginCount]=useState(0)
     const [codeGenerationCount,setCodeGenerationCount]=useState(0)
     const [algo,setAlgo]=useState('')
    
     useEffect(()=>{
-            localStorage.setItem('algo', JSON.stringify(algo));
+            localStorage.setItem("algo", JSON.stringify(algo));
           }, [algo]);
+
     useEffect(()=>{
-            //add the code to get the user name,trial count and count Generation count from the backend
+            //count Generation count from the backend
             axios.defaults.withCredentials = true //since no ssl..
             const response= axios.post('http://localhost:8080/admin', )
                   .then((response) => {
-                  //console.log(response.data);
                   setCodeGenerationCount(response.data);
                 })
           }, [codeGenerationCount]);
     useEffect(()=>{
-            //add the code to get the user name,trial count and count Generation count from the backend
+            //login count from the backend
             axios.defaults.withCredentials = true //since no ssl..
             const response= axios.post('http://localhost:8080/admin2', )
                   .then((response) => {
-                 // console.log(response.data);
                   setLoginCount(response.data);
                 })
           }, [loginCount]);
+    useEffect(()=>{
+            //username 
+            const user=localStorage.getItem("username");
+            console.log("usern:"+ user)
+            setUserName(user);
+          }, [userName]);
     function handleAlgo(e)
     {
         setAlgo(e.target.value)
         window.open("/changeInfo",'_self');
+
     }
     function back()
     {
