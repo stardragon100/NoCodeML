@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-//import { Alert } from '@mui/material';
 import axios from 'axios'
-//import Popup from 'reactjs-popup';
 import { Link } from "react-router-dom";
 import './style2.css' 
 
@@ -14,6 +12,7 @@ class Login extends Component{
             access: false
         }
     }
+
 
 changePassword = (e)=> {
     this.setState({
@@ -38,11 +37,13 @@ changeEmail = (e)=> {
         }})
         .then((response) => {
             console.log(response.data.password);
-            if(this.state.email==="admin" && response.data.password.S===this.state.password)
+            if(response.data.status.S ==='admin' && response.data.password.S===this.state.password)
             {
+                localStorage.setItem("username", response.data.name.S);
+                console.log(localStorage.getItem("username"));
                 window.open("/admin",'_self');
             }
-            else if(response.data.password.S===this.state.password)
+            else if(response.data.status.S==='user' && response.data.password.S===this.state.password)
             {
                 console.log("valid credentials")
                 this.setState({
@@ -71,22 +72,6 @@ changeEmail = (e)=> {
  }
 render(){
     return(
-            // <div className='form'>
-            // <form className='flex flex-col w-80' >
-            // <label className='background-color-blue p-2 text-sm '>Email: </label>
-            // <input className='' type="text" placeholder="Email" onChange={this.changeEmail}></input>
-            
-            // <label className='background-color-blue p-2 text-sm'>Password: </label>
-            // <input className=''  type="Text" placeholder="Password" onChange={this.changePassword}></input>
-            
-            // <button className='background-color-blue p-2 rounded-lg text-sm' onClick={(e)=>{this.submitForm(e)}}>Login</button> 
-            // <br/>
-            // <label className='text-white text-center p-2 text-sm '>Don't have an account? </label>
-            // {/* <button className='background-color-blue p-2 text-sm rounded-lg' onClick={this.signUp}>Sign-Up</button>  */}
-            // <Link to="/signup" className='background-color-blue p-2 rounded-lg text-sm text-center'>Sign Up</Link>
-            // </form>
-            // </div>  
-            //////
             <div >
                 <div class='form'>
                 <div class="card">

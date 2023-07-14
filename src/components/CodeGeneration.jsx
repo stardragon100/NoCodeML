@@ -125,8 +125,6 @@ function createCode(data){
         
         })
         handleCompleted()
-        
-        
         var temp3=temp1+'\n'+temp2 ;
         //e.preventDefault();
         console.log("hello")
