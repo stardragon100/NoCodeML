@@ -12,12 +12,16 @@ import Preprocess from './Preprocess.jsx'
 import Input from './Input.jsx'
 import CodeGeneration from './CodeGeneration.jsx'
 import Output from './Output.jsx'
+import ANNInput from './ANNInput.jsx'
+import ANNHidden from './ANNHidden.jsx'
+import ANNOutput from './ANNOutput.jsx'
 //import Output1 from './Output1.jsx'
 import './style.css' 
 
 const NewComp = () => {
   const [layers,setLayers]=useState([{key:crypto.randomUUID(),type:'input',filename:'read.csv',iloc:'0',inbuilt:'iris_plant',testsize:'30',inputrandomstate:'None'},{key:crypto.randomUUID(),type:'preprocess',scaler:'StandardScaler'}])
   const [output,setOutput]=useState(true)
+  const [ann,setAnn]=useState(false)
   useEffect(() => {
     if(layers.length===3)
     {
@@ -87,6 +91,142 @@ const NewComp = () => {
     setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'naive_bayes',estimator:'GaussianNB'}]})
     setOutput(false)
     addOutput()
+  }
+  function addANN(e){
+    // e.preventDefault();
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'annInput',input_dim:'8'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'annHidden',activation:"'relu'",units:'128'}]})
+    setLayers((currentLayers)=>{return[...currentLayers,{key:crypto.randomUUID(),type:'annOutput',activation:"'relu'",units:'128',loss:"'binary_crossentropy'",optimizer:"'adam'",metrics:"['accuracy']",epochs:'10',batch_size:'32',filename:'output'}]})
+    setOutput(false)
+    setAnn(true)
+    // addOutput()
+  }
+  function addANNLayer(e){
+    // e.preventDefault();
+    const val = [...layers];
+    val.splice(-2,0,{key:crypto.randomUUID(),type:'annHidden',activation:"'relu'",units:'128'})
+    setLayers(val)
+  }
+  function changeANNInputDim(key,input_dim)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,input_dim}
+        }
+      return layer
+    })
+    })
+  }
+  function changeANNHiddenActivation(key,activation)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,activation}
+        }
+      return layer
+    })
+    })
+  }
+  function changeANNHiddenUnits(key,units)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,units}
+        }
+      return layer
+    })
+    })
+  }
+  function changeANNOutputActivation(key,activation)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,activation}
+        }
+      return layer
+    })
+    })
+  }
+  function changeANNOutputUnits(key,units)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,units}
+        }
+      return layer
+    })
+    })
+  }
+  function changeANNOutputLoss(key,loss)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,loss}
+        }
+      return layer
+    })
+    })
+  }
+  function changeANNOutputOptimizer(key,optimizer)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,optimizer}
+        }
+      return layer
+    })
+    })
+  }
+  function changeANNOutputMetrics(key,metrics)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,metrics}
+        }
+      return layer
+    })
+    })
+  }
+  function changeANNOutputEpochs(key,epochs)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,epochs}
+        }
+      return layer
+    })
+    })
+  }
+  function changeANNOutputBatchSize(key,batch_size)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,batch_size}
+        }
+      return layer
+    })
+    })
+  }
+  function changeANNOutputFilename(key,filename)
+  {
+    setLayers(currentLayers => {
+      return currentLayers.map(layer=>{
+      if(layer.key===key){
+          return {...layer,filename}
+        }
+      return layer
+    })
+    })
   }
   function changeDecisionSplitter(key,splitter)
   {
@@ -570,6 +710,12 @@ const NewComp = () => {
               <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addDecisionTree()}>Decision Tree</button>
               <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addSvm()}>SVM</button>
               <button className='w-80  m-1 background-color-blue rounded-lg' onClick={()=>addNaiveBayes()}>Naive Bayes</button>
+              <button className='w-80  m-1 background-color-blue rounded-lg' onClick={(e)=>addANN(e)}>ANN</button>
+            </div>):ann?(<div className='flex flex-row'>
+            <div className='card1 w-96 py-2 border-dashed  gap-1 text-4xl h-24 rounded-lg background-color1'>
+              <button className='w-80  m-1 background-color-blue rounded-lg' onClick={(e)=>addANNLayer(e)}>Add layer</button>
+            </div>
+            {/* <Output  changeOutputFileName={changeOutputFileName}/> */}
             </div>):(<div></div>)
             
           }
@@ -617,11 +763,23 @@ const NewComp = () => {
               {
                 return <Naive_bayes setKey={layer.key} removeLayer={removeLayer} changeNaiveBayesEstimator={changeNaiveBayesEstimator} />
               }
-              if(layer.type==='output')
+              if(layer.type==='output'&& ann===false)
                 {
                  // return <Output1 setKey={layer.key}/>
                   return <Output setKey={layer.key} changeOutputFileName={changeOutputFileName}/>
                 }
+              if(layer.type==='annInput')
+              {
+                return <ANNInput setKey={layer.key} removeLayer={removeLayer} changeANNInputDim={changeANNInputDim}/>
+              }
+              if(layer.type==='annHidden')
+              {
+                return <ANNHidden setKey={layer.key} removeLayer={removeLayer} changeANNHiddenActivation={changeANNHiddenActivation} changeANNHiddenUnits={changeANNHiddenUnits} />
+              }
+              if(layer.type==='annOutput')
+              {
+                return <ANNOutput setKey={layer.key} removeLayer={removeLayer} changeANNOutputActivation={changeANNOutputActivation} changeANNOutputUnits={changeANNOutputUnits} changeANNOutputLoss={changeANNOutputLoss} changeANNOutputOptimizer={changeANNOutputOptimizer} changeANNOutputMetrics={changeANNOutputMetrics} changeANNOutputBatchSize={changeANNOutputBatchSize} changeANNOutputEpochs={changeANNOutputEpochs} changeANNOutputFilename={changeANNOutputFilename}/>
+              }
             })}
           </ul>
       </div>

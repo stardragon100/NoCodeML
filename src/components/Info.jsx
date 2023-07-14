@@ -78,10 +78,9 @@ render(){
       <button className='infobutton' value="Naive Bayes" onClick={(e)=>{this.getDetails(e)}}>Naive Bayes</button>
       </div>
       </div>
-      <div className='details'>
-      <p className='info-details'>
-          {this.state.details.split('\n').map(str => <p className='self-start'>{str}</p>)}
-      </p>
+      <div>
+      <textarea className='details' value={this.state.details}>
+      </textarea>
       </div>
       </div>
   )

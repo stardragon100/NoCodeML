@@ -13,6 +13,9 @@ import inputs from './codeGeneration/CGInput'
 import preprocess from './codeGeneration/CGPreprocess'
 import outPut from './codeGeneration/CGOutput'
 import axios from 'axios'
+import annInput from './codeGeneration/CGANNInput.jsx'
+import annHidden from './codeGeneration/CGANNHidden.jsx'
+import annOutput from './codeGeneration/CGANNOutput.jsx'
 
 const CodeGeneration = ({data,selectedOption}) => {
   
@@ -122,8 +125,32 @@ function createCode(data){
             setImports(temp1)
             setCode(temp2)
           }
-        
-        })
+        else if(layer.type==='annInput')
+        {
+          var temp=annInput(layer)
+          temp1=temp1+temp.imports
+          temp2=temp2+temp.code
+          setImports(temp1)
+          setCode(temp2)
+        }
+        else if(layer.type==='annHidden')
+        {
+          var temp=annHidden(layer)
+          temp1=temp1+temp.imports
+          temp2=temp2+temp.code
+          setImports(temp1)
+          setCode(temp2)
+        }
+        else if(layer.type==='annOutput')
+        {
+          var temp=annOutput(layer)
+          temp1=temp1+temp.imports
+          temp2=temp2+temp.code
+          setImports(temp1)
+          setCode(temp2)
+        }
+    }
+  )
         handleCompleted()
         
         
@@ -141,9 +168,9 @@ function createCode(data){
 async function handleDownload (e)  {
   // const downloadEndpoint = 'http://localhost:8080/download'; // Set the backend endpoint for file download
   axios.defaults.withCredentials = true
-  let blob = await fetch('http://localhost:8080/download').then(r => r.blob());
+  let blob = await fetch('http://localhost:8080/file').then(r => r.blob());
   let blob1 = await fetch('http://localhost:8080/download/output').then(r => r.blob());
-  console.log(blob)
+  console.log(blob,blob1)
   const url = window.URL.createObjectURL(new Blob([blob]));
       const link = document.createElement('a');
       link.href = url;
