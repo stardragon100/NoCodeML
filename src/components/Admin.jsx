@@ -79,7 +79,7 @@ const Admin = () => {
                         </div>
                         <div className='flex flex-col infoarea shadow-md shadow-gray-400'>
                             <div className='counts m-8'>
-                                Login Count
+                                User Count
                                 <div className='bg-white w-24 rounded-md text-black text-center'>
                                     {loginCount}
                                 </div>
