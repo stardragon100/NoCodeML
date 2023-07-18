@@ -715,7 +715,6 @@ const NewComp = () => {
             <div className='card1 w-96 py-2 border-dashed  gap-1 text-4xl h-24 rounded-lg background-color1'>
               <button className='w-80  m-1 background-color-blue rounded-lg' onClick={(e)=>addANNLayer(e)}>Add layer</button>
             </div>
-            {/* <Output  changeOutputFileName={changeOutputFileName}/> */}
             </div>):(<div></div>)
             
           }

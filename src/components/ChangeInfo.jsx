@@ -6,13 +6,11 @@ const [algo, setAlgo] = useState();
 const [userName,setUserName]=useState('');
 const [info,setInfo]=useState('')
 const ref = useRef(null);
-
 useEffect(() => {
   const algos = JSON.parse(localStorage.getItem('algo'));
   setAlgo(algos)
   setInfo('Trial info')
 }, []);
-
 useEffect(()=>{
     axios.defaults.withCredentials = true 
     const response= axios.post('http://localhost:8080/admin3', {
@@ -24,9 +22,6 @@ useEffect(()=>{
            setInfo(response.data.details.S)
         })
 }, [algo]);
-
-
-
 function updateInfo()
 {
     console.log(ref.current.value)
@@ -68,5 +63,4 @@ function dashboard()
     </div>
   )
 }
-
 export default ChangeInfo
