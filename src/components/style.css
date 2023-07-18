@@ -351,11 +351,6 @@
     top: 0;
   }
   
-  .button:hover:before,.button:hover:after {
-    opacity: 1;
-    /* visibility: visible; */
-  }
-  
   .button:hover:after {
     bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
   }
