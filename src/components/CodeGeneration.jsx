@@ -153,18 +153,15 @@ function createCode(data){
   )
         handleCompleted()
         var temp3=temp1+'\n'+temp2 ;
-        //e.preventDefault();
         console.log("hello")
         axios.defaults.withCredentials = true //since no ssl..
         const response= axios.post('http://localhost:8080/codegeneration', {
             data : {
                 code:temp3,
-                //password:this.state.password,
             }})
             console.log("sent?");
 }
 async function handleDownload (e)  {
-  // const downloadEndpoint = 'http://localhost:8080/download'; // Set the backend endpoint for file download
   axios.defaults.withCredentials = true
   let blob = await fetch('http://localhost:8080/file').then(r => r.blob());
   let blob1 = await fetch('http://localhost:8080/download/output').then(r => r.blob());
@@ -183,12 +180,9 @@ async function handleDownload (e)  {
       document.body.appendChild(link1);
       link1.click();
       link1.parentNode.removeChild(link1);
-
 };
-
   return (
-    
-      (completed)?
+    (completed)?
     (
     <div>
       <CodeSection imports={imports} code={code}/>
@@ -209,5 +203,4 @@ async function handleDownload (e)  {
     )
   )
 }
-
 export default CodeGeneration

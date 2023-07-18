@@ -15,5 +15,4 @@ const CodeSection=({imports,code}) =>{
 
    )
 }
-
 export default CodeSection

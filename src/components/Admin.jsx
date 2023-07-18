@@ -70,6 +70,7 @@ const Admin = () => {
                         <button className='button-2' value='K-Means' onClick={handleAlgo}>K-Means</button>
                         <button className='button-1' value='SVM' onClick={handleAlgo}>SVM</button>
                         <button className='button-2' value='Naive Bayes' onClick={handleAlgo}>Naive Bayes</button>
+                        <button className='button-1' value='ANN' onClick={handleAlgo}>ANN</button>
                     </div>    
                 </div>
                 <div className='flex flex-col'>

@@ -62,6 +62,9 @@ render(){
         <div className='algorithm'>
         <button className='infobutton' value="Naive Bayes" onClick={(e)=>{this.getDetails(e)}}>Naive Bayes</button>
         </div>
+        <div className='algorithm'>
+        <button className='infobutton' value="ANN" onClick={(e)=>{this.getDetails(e)}}>ANN</button>
+        </div>
       </div>
       <div>
       <textarea className='details' value={this.state.details}>
